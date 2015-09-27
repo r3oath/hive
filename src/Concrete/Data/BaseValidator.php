@@ -27,5 +27,7 @@ class BaseValidator implements GenericValidatorContract
         if ($v->fails()) {
             $this->errors = $v->errors();
         }
+
+        return $this;
     }
 }
