@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Lib\Data;
+namespace R\Hive\Concrete\Data;
 
 use R\Hive\Contracts\Data\GenericValidator as GenericValidatorContract;
 use Validator;
