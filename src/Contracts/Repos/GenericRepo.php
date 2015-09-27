@@ -4,6 +4,7 @@ namespace R\Hive\Contracts\Repos;
 
 use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
 use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
+use R\Hive\Contracts\Handlers\GenericObserver as GenericObserverContract;
 use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
 use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
 
@@ -59,4 +60,18 @@ interface GenericRepo
         DestroyHandlerContract $handler,
         GenericInstanceContract $instance
     );
+
+    /**
+     * Register an observing class that will receive notifications.
+     * @param  GenericObserverContract $observer The observer.
+     * @return void
+     */
+    public function registerObserver(GenericObserverContract $observer);
+
+    /**
+     * Unregister an observing class that no longer wishes to receive notifications.
+     * @param  GenericObserverContract $observer The observer.
+     * @return void
+     */
+    public function unregisterObserver(GenericObserverContract $observer);
 }
