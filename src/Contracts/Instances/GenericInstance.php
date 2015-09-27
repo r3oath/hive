@@ -1,6 +1,6 @@
 <?php
 
-namespace R3O\Hive\Contracts\Instances;
+namespace R\Hive\Contracts\Instances;
 
 interface GenericInstance
 {

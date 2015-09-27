@@ -1,8 +1,8 @@
 <?php
 
-namespace R3O\Hive\Contracts\Handlers;
+namespace R\Hive\Contracts\Data;
 
-interface Message
+interface GenericMessage
 {
     public function getMessage();
 

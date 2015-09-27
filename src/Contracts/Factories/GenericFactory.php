@@ -1,19 +1,14 @@
 <?php
 
-namespace R\Hive\Contracts\Repos;
+namespace R\Hive\Contracts\Factories;
 
 use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
 use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
 use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
 
-interface GenericRepo
+interface GenericFactory
 {
-    public function all();
-
-    public function find($id);
-
-    public function create(
+    public function make(
         CreateHandlerContract $handler,
         $attributes = []
     );
@@ -22,10 +17,5 @@ interface GenericRepo
         UpdateHandlerContract $handler,
         GenericInstanceContract $instance,
         $attributes = []
-    );
-
-    public function destroy(
-        DestroyHandlerContract $handler,
-        GenericInstanceContract $instance
     );
 }

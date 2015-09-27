@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-2": {
-            "R3O\\Hive": "src"
+            "R\\Hive": "src"
         }
     }
 }

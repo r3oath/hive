@@ -1,12 +1,12 @@
 <?php
 
-namespace R3O\Hive\Contracts\Handlers;
+namespace R\Hive\Contracts\Handlers;
 
-use R3O\Hive\Contracts\Handlers\Message as MessageContract;
+use R\Hive\Contracts\Data\GenericMessage as GenericMessageContract;
 
 interface DestroyHandler
 {
     public function destroySucceeded();
 
-    public function destroyFailed(MessageContract $message);
+    public function destroyFailed(GenericMessageContract $message);
 }
