@@ -8,9 +8,7 @@ before_script:
   - composer install
 
 script:
-  - phpenv config-rm xdebug.ini
   - mkdir -p build/logs
-  - php vendor/bin/phpunit
 
 after_script:
   - php vendor/bin/coveralls
