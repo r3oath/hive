@@ -2,13 +2,19 @@
 
 namespace R\Hive\Concrete\Data;
 
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use R\Hive\Contracts\Data\GenericValidator as GenericValidatorContract;
-use Validator;
 
 class BaseValidator implements GenericValidatorContract
 {
-    protected $rules;
+    protected $rules  = [];
     protected $errors = null;
+    protected $factory;
+
+    public function __construct(ValidationFactory $factory)
+    {
+        $this->factory = $factory;
+    }
 
     public function getErrors()
     {
@@ -22,10 +28,10 @@ class BaseValidator implements GenericValidatorContract
 
     public function validate($attributes = [])
     {
-        $v = Validator::make($attributes, $this->rules);
+        $validator = $this->factory->make($attributes, $this->rules);
 
-        if ($v->fails()) {
-            $this->errors = $v->errors();
+        if ($validator->fails()) {
+            $this->errors = $validator->errors();
         }
 
         return $this;
