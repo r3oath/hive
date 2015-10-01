@@ -1,2 +1,24 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Unica+One|Open+Sans+Condensed:300);
 
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 16pt;
+    background-color: #2C3E50;
+    color: #ECF0F1;
+}
+
+h1, h2 {
+    font-family: 'Unica One', cursive;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 52pt;
+    color: #3498DB;
+}
+
+h2 {
+    color: #E74C3C;
+}

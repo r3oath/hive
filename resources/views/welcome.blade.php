@@ -1,45 +1,28 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hive: Guestbook Example App</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1>Hive</h1>
+                <p>Hexagonal architecture framework for Laravel 5.1</p>
             </div>
         </div>
-    </body>
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2><i class="fa fa-cloud"></i></h2>
+                <p>This example application is designed to show how a simple implementation of <b>Hive</b> would be put together.</p>
+                <p>The <kbd>JSON</kbd> api at the <code>/entries</code> endpoint provides a restful way to manage guestbook entries.</p>
+                <p>Try it out and check out the source!</p>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
