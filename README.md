@@ -46,4 +46,4 @@ You are free to implement the given contracts in what ever manner suits your dev
 
 # Example
 
-To play with an example implmentation of Hive, check out the `example-app` branch of this repo.
+To play with an example implementation of Hive, check out the `example-app` branch of this repo.
