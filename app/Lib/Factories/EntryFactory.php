@@ -19,10 +19,15 @@ class EntryFactory implements GenericFactory
         $this->validator = $validator;
     }
 
+    // Here you create your instances in what ever fashion suit your needs.
+    // I've used Laravels built in Model methods to do so.
     public function make(
         CreateHandlerContract $handler,
         $attributes = []
     ) {
+        // If the supplied attributes are invalid, we can let the requesting
+        // class know something went wrong with making this instance and pass
+        // along a message and a reference to the validator.
         $this->validator->validate($attributes);
         if ($this->validator->hasErrors()) {
             $message = new BaseMessage('Failed to validate supplied attributes', $this->validator);
@@ -33,9 +38,12 @@ class EntryFactory implements GenericFactory
         $instance->fill($attributes);
         $instance->save();
 
+        // The instance was successfully created, let the requesting class know!
         return $handler->createSucceeded($instance);
     }
 
+    // Almost exactly the same as the make method, except here we just update
+    // the attributes on the instance.
     public function update(
         UpdateHandlerContract $handler,
         GenericInstanceContract $instance,
