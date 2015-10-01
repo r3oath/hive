@@ -43,3 +43,7 @@ The following **contracts** define the base structure of this framework.
 # Usage
 
 You are free to implement the given contracts in what ever manner suits your development needs. Some contracts have been realized to help speed up your development and can be found/extended from the `src/Concrete/...` directory.
+
+# Example
+
+To play with an example implmentation of Hive, check out the `example-app` branch of this repo.
