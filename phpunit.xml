@@ -1,42 +1,28 @@
-<phpunit
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
-   backupGlobals="true"
-   backupStaticAttributes="false"
-   bootstrap="vendor/autoload.php"
-   cacheTokens="false"
-   colors="true"
-   convertErrorsToExceptions="true"
-   convertNoticesToExceptions="true"
-   convertWarningsToExceptions="true"
-   forceCoversAnnotation="false"
-   mapTestClassNameToCoveredClassName="false"
-   printerClass="PHPUnit_TextUI_ResultPrinter"
-   processIsolation="false"
-   stopOnError="false"
-   stopOnFailure="false"
-   stopOnIncomplete="false"
-   stopOnSkipped="false"
-   stopOnRisky="false"
-   testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
-   timeoutForSmallTests="1"
-   timeoutForMediumTests="10"
-   timeoutForLargeTests="60"
-   verbose="false">
-   <logging>
-      <log type="coverage-clover" target="build/logs/clover.xml"/>
-   </logging>
-   <filter>
-     <whitelist processUncoveredFilesFromWhitelist="true">
-       <directory suffix=".php">src/Concrete</directory>
-     </whitelist>
-   </filter>
-   <testsuites>
-      <testsuite name="Data Test Suite">
-         <directory>tests/Data</directory>
-      </testsuite>
-      <testsuite name="Observers Test Suite">
-         <directory>tests/Observers</directory>
-      </testsuite>
-   </testsuites>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">app/</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+    </php>
 </phpunit>

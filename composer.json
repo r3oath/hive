@@ -1,29 +1,52 @@
 {
-    "name": "r3oath/hive",
-    "type": "framework",
-    "description": "Hexagonal architecture framework for Laravel 5.1",
-    "keywords": ["hexagonal","architecture","laravel","framework"],
-    "homepage": "https://github.com/r3oath/hive",
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Tristan Strathearn",
-            "email": "r3oath@protonmail.ch",
-            "homepage": "https://github.com/r3oath",
-            "role": "Full Stack Developer"
-        }
-    ],
+    "type": "project",
     "require": {
-        "php": ">=5.3.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "R\\Hive\\": "src/"
-        }
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "r3oath/hive": "^0.1.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
-        "mockery/mockery": "^0.9.4",
-        "satooshi/php-coveralls": "^0.6.1"
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "pre-update-cmd": [
+            "php artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php artisan optimize"
+        ],
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
     }
 }

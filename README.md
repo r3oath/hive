@@ -1,44 +1,27 @@
-# Hive
+## Laravel PHP Framework
 
-[![Build Status](https://travis-ci.org/r3oath/hive.svg?branch=master)](https://travis-ci.org/r3oath/hive) 
-[![Coverage Status](https://coveralls.io/repos/r3oath/hive/badge.svg?branch=master&service=github)](https://coveralls.io/github/r3oath/hive?branch=master)
+[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Hexagonal architecture framework for Laravel 5.1
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-# Installation
+Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-Installation is simple, simply issue the following composer command
+## Official Documentation
 
-```bash
-$ composer require r3oath/hive
-```
+Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-# Structure
+## Contributing
 
-The following **contracts** define the base structure of this framework.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-##### src/Contracts/Data/
-- **GenericMessage** Defines a message that is passed along with a failure notification, providing the requesting class with more information as to what went wrong. 
-- **GenericValidator** Provides attribute/data validation. Typically used by the instance factory.
+## Security Vulnerabilities
 
-##### src/Contracts/Factories/
-- **GenericFactory** Provides methods for instantiating and updating instances.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-##### src/Contracts/Handlers/
-- **CreateHandler** Implemented by a requesting class wishing to receive notifications on instance creation.
-- **UpdateHandler** Implemented by a requesting class wishing to receive notifications on instance updates.
-- **DestroyHandler** Implemented by a requesting class wishing to receive notifications on instance destruction.
+### License
 
-##### src/Contracts/Instances/
-- **GenericInstance** Defines some simple methods to distinguish instances from each other.
-
-##### src/Contracts/Observers/
-- **GenericObservatory** The observatory interface allows a repository (or another class) to notify a number of different services on instance creation, updates and destruction. Eg: Sending out an email to an author when their book has been added.
-- **GenericObserver** Defines an observer that can optionally receive create, update or destroy notifications from the observatory.
-
-##### src/Contracts/Repos/
-- **GenericRepo** Defines an instance repository that delegates the creation, modification and destruction of instances.
-
-# Usage
-
-You are free to implement the given contracts in what ever manner suits your development needs. Some contracts have been realized to help speed up your development and can be found/extended from the `src/Concrete/...` directory.
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
