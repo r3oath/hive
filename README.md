@@ -1,27 +1,31 @@
-## Laravel PHP Framework
+![Hive: Hexagonal Architecture Framework for Laravel](https://cloud.githubusercontent.com/assets/2805249/10210584/1901b6f4-682c-11e5-9c6c-f1a549f34f7e.png)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Build Status](https://travis-ci.org/r3oath/hive.svg?branch=master)](https://travis-ci.org/r3oath/hive) 
+[![Coverage Status](https://coveralls.io/repos/r3oath/hive/badge.svg?branch=master&service=github)](https://coveralls.io/github/r3oath/hive?branch=master)
+[![PHP version](https://badge.fury.io/ph/r3oath%2Fhive.svg)](http://badge.fury.io/ph/r3oath%2Fhive)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Hexagonal architecture framework for Laravel 5.1
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+# Example app installation.
 
-## Official Documentation
+Once you have checked out this branch, issue the following commands.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+```bash
+$ composer install
+$ npm install
+$ gulp
+```
 
-## Contributing
+You'll need to setup your `.env`, at a very minimum, just specify that `DB_CONNECTION=sqlite` and run
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+```bash
+$ touch database/database.sqlite
+$ php artisan migrate --seed
+$ php artisan serve
+```
 
-## Security Vulnerabilities
+You should now be able to access the example app at `localhost:8000`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+When you've done trying it out and want to see how Hive has been implemented, check out the source code and have a look in the `app\Lib` directory, as well as the `app\Http\Controllers\EntriesController.php` controller.
 
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Enjoy!
