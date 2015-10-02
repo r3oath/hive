@@ -61,7 +61,7 @@ interface GenericRepo
     );
 
     /**
-     * Whether this repository supports and observatory.
+     * Whether this repository supports an observatory.
      * @return boolean
      */
     public function supportsObservatory();
