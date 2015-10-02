@@ -5,6 +5,7 @@ namespace R\Hive\Contracts\Factories;
 use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
 use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
 use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
+use R\Hive\Contracts\Observers\GenericObservatory as GenericObservatoryContract;
 
 interface GenericFactory
 {
@@ -16,7 +17,8 @@ interface GenericFactory
      */
     public function make(
         CreateHandlerContract $handler,
-        $attributes = []
+        $attributes = [],
+        GenericObservatoryContract $observatory = null
     );
 
     /**
@@ -29,6 +31,7 @@ interface GenericFactory
     public function update(
         UpdateHandlerContract $handler,
         GenericInstanceContract $instance,
-        $attributes = []
+        $attributes = [],
+        GenericObservatoryContract $observatory = null
     );
 }

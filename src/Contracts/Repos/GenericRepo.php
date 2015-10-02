@@ -4,7 +4,6 @@ namespace R\Hive\Contracts\Repos;
 
 use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
 use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
-use R\Hive\Contracts\Handlers\GenericObservatory as GenericObservatoryContract;
 use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
 use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
 
@@ -62,16 +61,8 @@ interface GenericRepo
     );
 
     /**
-     * Register an observatory class that will dispatch notifications.
-     * @param  GenericObservatoryContract $observatory The observatory.
-     * @return void
+     * Whether this repository supports and observatory.
+     * @return boolean
      */
-    public function registerObservatory(GenericObservatoryContract $observatory);
-
-    /**
-     * Unregister an observatory class that no longer wishes to dispatch notifications.
-     * @param  GenericObservatoryContract $observatory The observatory.
-     * @return void
-     */
-    public function unregisterObservatory(GenericObservatoryContract $observatory);
+    public function supportsObservatory();
 }
