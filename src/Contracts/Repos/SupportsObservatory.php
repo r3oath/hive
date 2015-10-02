@@ -2,6 +2,8 @@
 
 namespace R\Hive\Contracts\Repos;
 
+use R\Hive\Contracts\Observers\GenericObservatory as GenericObservatoryContract;
+
 interface SupportsObservatory
 {
     /**
