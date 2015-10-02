@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Lib\Observers\EntryLogObserver;
 use App\Lib\Repos\EntryRepo;
 use Illuminate\Http\Request;
+use R\Hive\Concrete\Observers\BaseObservatory;
 use R\Hive\Contracts\Data\GenericMessage as GenericMessageContract;
 use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
 use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
@@ -15,9 +17,14 @@ class EntriesController extends Controller implements CreateHandlerContract, Upd
 {
     protected $repo;
 
-    public function __construct(EntryRepo $repo)
+    public function __construct(EntryRepo $repo, BaseObservatory $observatory, EntryLogObserver $observer)
     {
         $this->repo = $repo;
+
+        if ($this->repo->supportsObservatory()) {
+            $observatory->registerObserver($observer);
+            $this->repo->registerObservatory($observatory);
+        }
     }
 
     public function createFailed(GenericMessageContract $message)
