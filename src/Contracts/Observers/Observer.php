@@ -2,7 +2,7 @@
 
 namespace R\Hive\Contracts\Observers;
 
-interface GenericObserver
+interface Observer
 {
     /**
      * A unique string-serial that identifies this observer.

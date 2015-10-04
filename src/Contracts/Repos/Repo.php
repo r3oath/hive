@@ -2,15 +2,15 @@
 
 namespace R\Hive\Contracts\Repos;
 
-use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
-use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
-use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
+use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
+use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
+use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
+use R\Hive\Contracts\Instances\Instance as InstanceContract;
 
 /**
- * Represents a generic instance repository.
+ * Represents a  instance repository.
  */
-interface GenericRepo
+interface Repo
 {
     /**
      * Returns a collection of all the instances.
@@ -27,37 +27,37 @@ interface GenericRepo
 
     /**
      * Create a new instance.
-     * @param  CreateHandlerContract $handler    The requesting class that will handle the result.
+     * @param  OnCreateContract $handler    The requesting class that will handle the result.
      * @param  array                 $attributes The attributes for the new instance.
      * @return void
      */
     public function create(
-        CreateHandlerContract $handler,
+        OnCreateContract $handler,
         $attributes = []
     );
 
     /**
      * Update the given instance.
-     * @param  UpdateHandlerContract   $handler    The requesting class that will handle the result.
-     * @param  GenericInstanceContract $instance   The instance being updated.
+     * @param  OnUpdateContract   $handler    The requesting class that will handle the result.
+     * @param  InstanceContract $instance   The instance being updated.
      * @param  array                   $attributes The attributes to be updated.
      * @return void
      */
     public function update(
-        UpdateHandlerContract $handler,
-        GenericInstanceContract $instance,
+        OnUpdateContract $handler,
+        InstanceContract $instance,
         $attributes = []
     );
 
     /**
      * Destroy the given instance.
-     * @param  DestroyHandlerContract  $handler  The requesting class that will handle the result.
-     * @param  GenericInstanceContract $instance The instance to be destroyed.
+     * @param  OnDestroyContract  $handler  The requesting class that will handle the result.
+     * @param  InstanceContract $instance The instance to be destroyed.
      * @return void
      */
     public function destroy(
-        DestroyHandlerContract $handler,
-        GenericInstanceContract $instance
+        OnDestroyContract $handler,
+        InstanceContract $instance
     );
 
     /**

@@ -3,9 +3,9 @@
 namespace R\Hive\Concrete\Data;
 
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
-use R\Hive\Contracts\Data\GenericValidator as GenericValidatorContract;
+use R\Hive\Contracts\Data\Validator as ValidatorContract;
 
-class BaseValidator implements GenericValidatorContract
+class Validator implements ValidatorContract
 {
     protected $rules  = [];
     protected $errors = null;

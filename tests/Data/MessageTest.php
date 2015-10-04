@@ -1,16 +1,16 @@
 <?php
 
 use Mockery as m;
-use R\Hive\Concrete\Data\BaseMessage;
+use R\Hive\Concrete\Data\Message;
 
-class BaseMessageTest extends PHPUnit_Framework_TestCase
+class MessageTest extends PHPUnit_Framework_TestCase
 {
     public function testMessageAndValidatorConstruct()
     {
-        $validator = m::mock('R\Hive\Contracts\Data\GenericValidator');
+        $validator = m::mock('R\Hive\Contracts\Data\Validator');
 
         $test_message = 'test';
-        $message      = new BaseMessage($test_message, $validator);
+        $message      = new Message($test_message, $validator);
 
         $this->assertEquals(true, $message->hasValidator());
         $this->assertEquals($validator, $message->getValidator());
@@ -20,7 +20,7 @@ class BaseMessageTest extends PHPUnit_Framework_TestCase
     public function testMessageOnlyConstruct()
     {
         $test_message = 'test';
-        $message      = new BaseMessage($test_message);
+        $message      = new Message($test_message);
 
         $this->assertEquals(false, $message->hasValidator());
         $this->assertEquals($test_message, $message->getMessage());

@@ -1,17 +1,17 @@
 <?php
 
 use Mockery as m;
-use R\Hive\Concrete\Observers\BaseObservatory;
+use R\Hive\Concrete\Observers\Observatory;
 
-class BaseObservatoryTest extends PHPUnit_Framework_TestCase
+class ObservatoryTest extends PHPUnit_Framework_TestCase
 {
     protected $observer;
     protected $observatory;
 
     public function __construct()
     {
-        $this->observatory = new BaseObservatory;
-        $this->observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver', function ($mock) {
+        $this->observatory = new Observatory;
+        $this->observer    = m::mock('R\Hive\Contracts\Observers\Observer', function ($mock) {
             $mock->shouldReceive('serial')->andReturn('dummy');
         });
     }
@@ -23,9 +23,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnCreateFailed()
     {
-        $observatory = new BaseObservatory;
-        $message     = m::mock('R\Hive\Contracts\Data\GenericMessage');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\CreateHandler', function ($mock) use ($message) {
+        $observatory = new Observatory;
+        $message     = m::mock('R\Hive\Contracts\Data\Message');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnCreate', function ($mock) use ($message) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('createFailed')->once()->with($message);
         });
@@ -36,9 +36,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnCreateSucceeded()
     {
-        $observatory = new BaseObservatory;
-        $instance    = m::mock('R\Hive\Contracts\Instances\GenericInstance');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\CreateHandler', function ($mock) use ($instance) {
+        $observatory = new Observatory;
+        $instance    = m::mock('R\Hive\Contracts\Instances\Instance');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnCreate', function ($mock) use ($instance) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('createSucceeded')->once()->with($instance);
         });
@@ -49,9 +49,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnDestroyFailed()
     {
-        $observatory = new BaseObservatory;
-        $message     = m::mock('R\Hive\Contracts\Data\GenericMessage');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\DestroyHandler', function ($mock) use ($message) {
+        $observatory = new Observatory;
+        $message     = m::mock('R\Hive\Contracts\Data\Message');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnDestroy', function ($mock) use ($message) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('destroyFailed')->once()->with($message);
         });
@@ -62,9 +62,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnDestroySucceeded()
     {
-        $observatory = new BaseObservatory;
-        $instance    = m::mock('R\Hive\Contracts\Instances\GenericInstance');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\DestroyHandler', function ($mock) use ($instance) {
+        $observatory = new Observatory;
+        $instance    = m::mock('R\Hive\Contracts\Instances\Instance');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnDestroy', function ($mock) use ($instance) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('destroySucceeded')->once()->with($instance);
         });
@@ -75,9 +75,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnUpdateFailed()
     {
-        $observatory = new BaseObservatory;
-        $message     = m::mock('R\Hive\Contracts\Data\GenericMessage');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\UpdateHandler', function ($mock) use ($message) {
+        $observatory = new Observatory;
+        $message     = m::mock('R\Hive\Contracts\Data\Message');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnUpdate', function ($mock) use ($message) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('updateFailed')->once()->with($message);
         });
@@ -88,9 +88,9 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
 
     public function testObservatoryNotifiesObserverOnUpdateSucceeded()
     {
-        $observatory = new BaseObservatory;
-        $instance    = m::mock('R\Hive\Contracts\Instances\GenericInstance');
-        $observer    = m::mock('R\Hive\Contracts\Observers\GenericObserver, R\Hive\Contracts\Handlers\UpdateHandler', function ($mock) use ($instance) {
+        $observatory = new Observatory;
+        $instance    = m::mock('R\Hive\Contracts\Instances\Instance');
+        $observer    = m::mock('R\Hive\Contracts\Observers\Observer, R\Hive\Contracts\Handlers\OnUpdate', function ($mock) use ($instance) {
             $mock->shouldReceive('serial')->andReturn('dummy');
             $mock->shouldReceive('updateSucceeded')->once()->with($instance);
         });
@@ -119,11 +119,11 @@ class BaseObservatoryTest extends PHPUnit_Framework_TestCase
      */
     public function testUnregisterObserverBySerial()
     {
-        $observer1 = m::mock('R\Hive\Contracts\Observers\GenericObserver', function ($mock) {
+        $observer1 = m::mock('R\Hive\Contracts\Observers\Observer', function ($mock) {
             $mock->shouldReceive('serial')->atLeast()->times(1)->andReturn('dummy1');
         });
 
-        $observer2 = m::mock('R\Hive\Contracts\Observers\GenericObserver', function ($mock) {
+        $observer2 = m::mock('R\Hive\Contracts\Observers\Observer', function ($mock) {
             $mock->shouldReceive('serial')->atLeast()->times(1)->andReturn('dummy2');
         });
 

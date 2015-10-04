@@ -1,9 +1,9 @@
 <?php
 
 use Mockery as m;
-use R\Hive\Concrete\Data\BaseValidator;
+use R\Hive\Concrete\Data\Validator;
 
-class BaseValidatorTest extends PHPUnit_Framework_TestCase
+class ValidatorTest extends PHPUnit_Framework_TestCase
 {
     public function tearDown()
     {
@@ -25,7 +25,7 @@ class BaseValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
         });
 
-        $dummy_validator = new BaseValidator($factory);
+        $dummy_validator = new Validator($factory);
         $dummy_validator->validate(['foo' => 'bar']);
 
         $this->assertEquals(true, $dummy_validator->hasErrors());
@@ -42,7 +42,7 @@ class BaseValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
         });
 
-        $dummy_validator = new BaseValidator($factory);
+        $dummy_validator = new Validator($factory);
         $dummy_validator->validate(['foo' => 'bar']);
 
         $this->assertEquals(false, $dummy_validator->hasErrors());

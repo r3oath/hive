@@ -2,7 +2,7 @@
 
 namespace R\Hive\Contracts\Instances;
 
-interface GenericInstance
+interface Instance
 {
     /**
      * Returns the id for the given instance.
