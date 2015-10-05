@@ -5,8 +5,8 @@ namespace R\Hive\Contracts\Commands;
 interface Command
 {
     /**
-     * A unique serial-string that describes this command type.
-     * Eg: "register_new_user".
+     * A unique string-serial that describes this command.
+     * Eg: "create_new_user"
      * @return string
      */
     public function serial();

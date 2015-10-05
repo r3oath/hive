@@ -1,6 +1,6 @@
 <?php
 
-namespace R\Hive\Contracts\Commands;
+namespace R\Hive\Contracts\Commands\Handlers;
 
 use R\Hive\Contracts\Commands\Command as CommandContract;
 

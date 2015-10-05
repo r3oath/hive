@@ -7,11 +7,11 @@ use R\Hive\Contracts\Commands\Command as CommandContract;
 interface Bus
 {
     /**
-     * Process the given command and possibly return a result.
-     * @param  CommandContract $command The command to process.
+     * Execute the given command and possibly return a result.
+     * @param  CommandContract $command The command to execute.
      * @return mixed
      */
-    public function process(CommandContract $command);
+    public function execute(CommandContract $command);
 
     /**
      * Resolve the command handler for the given command serial.
@@ -19,4 +19,11 @@ interface Bus
      * @return Object         The command handler.
      */
     public function resolveHandler($serial);
+
+    /**
+     * The double-colon seperated namespace in which the command handlers reside.
+     * Eg: "app::Lib::Commands::Handlers::"
+     * @return string
+     */
+    public function handlersNamespace();
 }
