@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Lib\Observers\EntryLogObserver;
 use App\Lib\Repos\EntryRepo;
 use Illuminate\Http\Request;
-use R\Hive\Concrete\Observers\BaseObservatory;
-use R\Hive\Contracts\Data\GenericMessage as GenericMessageContract;
-use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
-use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
-use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
+use R\Hive\Concrete\Observers\Observatory;
+use R\Hive\Contracts\Data\Message as MessageContract;
+use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
+use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
+use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
+use R\Hive\Contracts\Instances\Instance as InstanceContract;
 
-class EntriesController extends Controller implements CreateHandlerContract, UpdateHandlerContract, DestroyHandlerContract
+class EntriesController extends Controller implements OnCreateContract, OnUpdateContract, OnDestroyContract
 {
     protected $repo;
 
-    public function __construct(EntryRepo $repo, BaseObservatory $observatory, EntryLogObserver $observer)
+    public function __construct(EntryRepo $repo, Observatory $observatory, EntryLogObserver $observer)
     {
         $this->repo = $repo;
 
@@ -27,12 +27,12 @@ class EntriesController extends Controller implements CreateHandlerContract, Upd
         }
     }
 
-    public function createFailed(GenericMessageContract $message)
+    public function createFailed(MessageContract $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function createSucceeded(GenericInstanceContract $instance)
+    public function createSucceeded(InstanceContract $instance)
     {
         return $instance;
     }
@@ -47,12 +47,12 @@ class EntriesController extends Controller implements CreateHandlerContract, Upd
         abort(404);
     }
 
-    public function destroyFailed(GenericMessageContract $message)
+    public function destroyFailed(MessageContract $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function destroySucceeded(GenericInstanceContract $instance)
+    public function destroySucceeded(InstanceContract $instance)
     {
         return ['message' => 'Successfully deleted entry!'];
     }
@@ -87,17 +87,17 @@ class EntriesController extends Controller implements CreateHandlerContract, Upd
         abort(404);
     }
 
-    public function updateFailed(GenericMessageContract $message)
+    public function updateFailed(MessageContract $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function updateSucceeded(GenericInstanceContract $instance)
+    public function updateSucceeded(InstanceContract $instance)
     {
         return $instance;
     }
 
-    protected function formattedMessage(GenericMessageContract $message)
+    protected function formattedMessage(MessageContract $message)
     {
         if ($message->hasValidator()) {
             $data = [

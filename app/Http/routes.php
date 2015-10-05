@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('entries', 'EntriesController');
+Route::resource(
+    'entries',
+    'EntriesController',
+    ['except' => ['create', 'edit']]
+);

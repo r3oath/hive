@@ -4,12 +4,12 @@ namespace App\Lib\Repos;
 
 use App\Entry;
 use App\Lib\Factories\EntryFactory;
-use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
-use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
-use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
-use R\Hive\Contracts\Observers\GenericObservatory as GenericObservatoryContract;
-use R\Hive\Contracts\Repos\GenericRepo as GenericRepoContract;
+use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
+use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
+use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
+use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Observers\Observatory as ObservatoryContract;
+use R\Hive\Contracts\Repos\Repo as RepoContract;
 use R\Hive\Contracts\Repos\SupportsObservatory as SupportsObservatoryContract;
 
 // This repo makes use of Laravels Eloquent Model handling framework
@@ -17,7 +17,7 @@ use R\Hive\Contracts\Repos\SupportsObservatory as SupportsObservatoryContract;
 //
 // It also delegates the creation and modification of instances
 // to the respective factory.
-class EntryRepo implements GenericRepoContract, SupportsObservatoryContract
+class EntryRepo implements RepoContract, SupportsObservatoryContract
 {
     protected $factory;
     protected $observatory;
@@ -34,7 +34,7 @@ class EntryRepo implements GenericRepoContract, SupportsObservatoryContract
     }
 
     public function create(
-        CreateHandlerContract $handler,
+        OnCreateContract $handler,
         $attributes = []
     ) {
         return $this->factory->make(
@@ -45,8 +45,8 @@ class EntryRepo implements GenericRepoContract, SupportsObservatoryContract
     }
 
     public function destroy(
-        DestroyHandlerContract $handler,
-        GenericInstanceContract $instance
+        OnDestroyContract $handler,
+        InstanceContract $instance
     ) {
         $instance->delete();
 
@@ -62,7 +62,7 @@ class EntryRepo implements GenericRepoContract, SupportsObservatoryContract
         return Entry::find($id);
     }
 
-    public function registerObservatory(GenericObservatoryContract $observatory)
+    public function registerObservatory(ObservatoryContract $observatory)
     {
         $this->observatory = $observatory;
     }
@@ -72,14 +72,14 @@ class EntryRepo implements GenericRepoContract, SupportsObservatoryContract
         return true;
     }
 
-    public function unregisterObservatory(GenericObservatoryContract $observatory)
+    public function unregisterObservatory(ObservatoryContract $observatory)
     {
         $this->observatory = null;
     }
 
     public function update(
-        UpdateHandlerContract $handler,
-        GenericInstanceContract $instance,
+        OnUpdateContract $handler,
+        InstanceContract $instance,
         $attributes = []
     ) {
         return $this->factory->update(

@@ -4,14 +4,14 @@ namespace App\Lib\Factories;
 
 use App\Entry;
 use App\Lib\Data\EntryValidator;
-use R\Hive\Concrete\Data\BaseMessage;
-use R\Hive\Contracts\Factories\GenericFactory;
-use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
-use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
-use R\Hive\Contracts\Observers\GenericObservatory as GenericObservatoryContract;
+use R\Hive\Concrete\Data\Message;
+use R\Hive\Contracts\Factories\Factory;
+use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
+use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
+use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Observers\Observatory as ObservatoryContract;
 
-class EntryFactory implements GenericFactory
+class EntryFactory implements Factory
 {
     protected $validator;
 
@@ -23,16 +23,16 @@ class EntryFactory implements GenericFactory
     // Here you create your instances in what ever fashion suit your needs.
     // I've used Laravels built in Model methods to do so.
     public function make(
-        CreateHandlerContract $handler,
+        OnCreateContract $handler,
         $attributes = [],
-        GenericObservatoryContract $observatory = null
+        ObservatoryContract $observatory = null
     ) {
         // If the supplied attributes are invalid, we can let the requesting
         // class know something went wrong with making this instance and pass
         // along a message and a reference to the validator.
         $this->validator->validate($attributes);
         if ($this->validator->hasErrors()) {
-            $message = new BaseMessage('Failed to validate supplied attributes', $this->validator);
+            $message = new Message('Failed to validate supplied attributes', $this->validator);
 
             if ($observatory !== null) {
                 $observatory->notifyOnCreateFailed($message);
@@ -56,14 +56,14 @@ class EntryFactory implements GenericFactory
     // Almost exactly the same as the make method, except here we just update
     // the attributes on the instance.
     public function update(
-        UpdateHandlerContract $handler,
-        GenericInstanceContract $instance,
+        OnUpdateContract $handler,
+        InstanceContract $instance,
         $attributes = [],
-        GenericObservatoryContract $observatory = null
+        ObservatoryContract $observatory = null
     ) {
         $this->validator->validate($attributes);
         if ($this->validator->hasErrors()) {
-            $message = new BaseMessage('Failed to validate supplied attributes', $this->validator);
+            $message = new Message('Failed to validate supplied attributes', $this->validator);
 
             if ($observatory !== null) {
                 $observatory->notifyOnUpdateFailed($message);

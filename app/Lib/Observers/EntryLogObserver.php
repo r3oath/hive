@@ -3,31 +3,31 @@
 namespace App\Lib\Observers;
 
 use Log;
-use R\Hive\Contracts\Data\GenericMessage as GenericMessageContract;
-use R\Hive\Contracts\Handlers\CreateHandler as CreateHandlerContract;
-use R\Hive\Contracts\Handlers\DestroyHandler as DestroyHandlerContract;
-use R\Hive\Contracts\Handlers\UpdateHandler as UpdateHandlerContract;
-use R\Hive\Contracts\Instances\GenericInstance as GenericInstanceContract;
-use R\Hive\Contracts\Observers\GenericObserver as GenericObserverContract;
+use R\Hive\Contracts\Data\Message as MessageContract;
+use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
+use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
+use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
+use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Observers\Observer as ObserverContract;
 
-class EntryLogObserver implements GenericObserverContract, CreateHandlerContract, UpdateHandlerContract, DestroyHandlerContract
+class EntryLogObserver implements ObserverContract, OnCreateContract, OnUpdateContract, OnDestroyContract
 {
-    public function createFailed(GenericMessageContract $message)
+    public function createFailed(MessageContract $message)
     {
         Log::error('Entry creation failed with message: ' . $message->getMessage());
     }
 
-    public function createSucceeded(GenericInstanceContract $instance)
+    public function createSucceeded(InstanceContract $instance)
     {
         Log::info('Entry creation succeeded.');
     }
 
-    public function destroyFailed(GenericMessageContract $message)
+    public function destroyFailed(MessageContract $message)
     {
         Log::error('Entry destroy failed with message: ' . $message->getMessage());
     }
 
-    public function destroySucceeded(GenericInstanceContract $instance)
+    public function destroySucceeded(InstanceContract $instance)
     {
         Log::info('Entry destroy succeeded.');
     }
@@ -37,12 +37,12 @@ class EntryLogObserver implements GenericObserverContract, CreateHandlerContract
         return 'entry_log_observer';
     }
 
-    public function updateFailed(GenericMessageContract $message)
+    public function updateFailed(MessageContract $message)
     {
         Log::error('Entry updated failed with message: ' . $message->getMessage());
     }
 
-    public function updateSucceeded(GenericInstanceContract $instance)
+    public function updateSucceeded(InstanceContract $instance)
     {
         Log::info('Entry update succeeded.');
     }
