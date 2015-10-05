@@ -6,10 +6,21 @@ use R\Hive\Concrete\Data\Validator;
 
 class EntryValidator extends Validator
 {
-    // Creating a validator is as simple as extending the Validator
-    // and specifying the rules for this instance.
-    protected $rules = [
-        'name'    => 'required|string|min:2',
-        'content' => 'required|string|max:140',
-    ];
+    public function getCreateRules()
+    {
+        return $this->generateRules();
+    }
+
+    public function getUpdateRules()
+    {
+        return $this->generateRules(true);
+    }
+
+    protected function generateRules($is_update = false)
+    {
+        return [
+            'name'    => ($is_update ? 'sometimes|' : '') . 'required|string|min:2',
+            'content' => ($is_update ? 'sometimes|' : '') . 'required|string|max:140',
+        ];
+    }
 }

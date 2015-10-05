@@ -90,14 +90,14 @@ class EntriesController extends Controller implements OnCreateContract, OnUpdate
 
     public function store(Request $request)
     {
-        return $this->repo->create($this, $request->only('name', 'content'));
+        return $this->repo->create($this, $request->all());
     }
 
     public function update(Request $request, $id)
     {
         $instance = $this->repo->find($id);
         if ($instance !== null) {
-            return $this->repo->update($this, $instance, $request->only('name', 'content'));
+            return $this->repo->update($this, $instance, $request->all());
         }
 
         abort(404);

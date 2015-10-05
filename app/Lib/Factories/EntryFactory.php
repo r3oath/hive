@@ -61,7 +61,7 @@ class EntryFactory implements Factory
         $attributes = [],
         ObservatoryContract $observatory = null
     ) {
-        $this->validator->validate($attributes);
+        $this->validator->isUpdate()->validate($attributes);
         if ($this->validator->hasErrors()) {
             $message = new Message('Failed to validate supplied attributes', $this->validator);
 
