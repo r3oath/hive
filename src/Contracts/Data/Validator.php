@@ -22,4 +22,24 @@ interface Validator
      * @return array The errors.
      */
     public function getErrors();
+
+    /**
+     * Get the validation create rules, called when attributes are
+     * being validated for instance creation.
+     * @return array
+     */
+    public function getCreateRules();
+
+    /**
+     * Get the validation update rules, called when attributes are
+     * being validated for instance modification.
+     * @return array
+     */
+    public function getUpdateRules();
+
+    /**
+     * Whether the validation to occur is for an update.
+     * @return boolean
+     */
+    public function isUpdate();
 }
