@@ -16,14 +16,18 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
             'something went wrong... duh',
         ];
 
-        $validator = m::mock('Illuminate\Contracts\Validation\Validator', function ($mock) use ($errors) {
-            $mock->shouldReceive('fails')->atLeast()->once()->andReturn(true);
-            $mock->shouldReceive('errors')->atLeast()->once()->andReturn($errors);
-        });
+        $validator = m::mock(
+            'Illuminate\Contracts\Validation\Validator',
+            function ($mock) use ($errors) {
+                $mock->shouldReceive('fails')->atLeast()->once()->andReturn(true);
+                $mock->shouldReceive('errors')->atLeast()->once()->andReturn($errors);
+            });
 
-        $factory = m::mock('Illuminate\Contracts\Validation\Factory', function ($mock) use ($validator) {
-            $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
-        });
+        $factory = m::mock(
+            'Illuminate\Contracts\Validation\Factory',
+            function ($mock) use ($validator) {
+                $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
+            });
 
         $dummy_validator = new Validator($factory);
         $dummy_validator->validate(['foo' => 'bar']);
@@ -34,13 +38,17 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
 
     public function testSuccessfulValidation()
     {
-        $validator = m::mock('Illuminate\Contracts\Validation\Validator', function ($mock) {
-            $mock->shouldReceive('fails')->atLeast()->once()->andReturn(false);
-        });
+        $validator = m::mock(
+            'Illuminate\Contracts\Validation\Validator',
+            function ($mock) {
+                $mock->shouldReceive('fails')->atLeast()->once()->andReturn(false);
+            });
 
-        $factory = m::mock('Illuminate\Contracts\Validation\Factory', function ($mock) use ($validator) {
-            $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
-        });
+        $factory = m::mock(
+            'Illuminate\Contracts\Validation\Factory',
+            function ($mock) use ($validator) {
+                $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
+            });
 
         $dummy_validator = new Validator($factory);
         $dummy_validator->validate(['foo' => 'bar']);
