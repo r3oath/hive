@@ -38,5 +38,8 @@
       <testsuite name="Observers Test Suite">
          <directory>tests/Observers</directory>
       </testsuite>
+      <testsuite name="Commands Test Suite">
+         <directory>tests/Commands</directory>
+      </testsuite>
    </testsuites>
 </phpunit>
