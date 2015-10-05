@@ -21,8 +21,8 @@ interface Bus
     public function resolveHandler($serial);
 
     /**
-     * The double-colon seperated namespace in which the command handlers reside.
-     * Eg: "app::Lib::Commands::Handlers::"
+     * The namespace in which the command handlers reside.
+     * Eg: "App\Lib\Commands\Handlers"
      * @return string
      */
     public function handlersNamespace();
