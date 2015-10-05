@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('entries/random', 'EntriesController@random');
 Route::resource(
     'entries',
     'EntriesController',
