@@ -14,7 +14,7 @@ If you just want to install this example app and not clone the entire Hive repo,
 $ git clone -b example-app --single-branch https://github.com/r3oath/hive.git hive-example-app
 ```
 
-Once you have the example app cloned, issue the following commands inside the example app directory.
+Once you have the example app cloned, issue the following commands inside the example app directory, or simply run the included `setup.sh` file which will do this automatically for you.
 
 ```bash
 $ composer install
