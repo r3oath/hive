@@ -31,6 +31,7 @@ class EntryFactory implements Factory
         // class know something went wrong with making this instance and pass
         // along a message and a reference to the validator.
         $this->validator->validate($attributes);
+
         if ($this->validator->hasErrors()) {
             $message = new Message('Failed to validate supplied attributes', $this->validator);
 
@@ -61,7 +62,8 @@ class EntryFactory implements Factory
         $attributes = [],
         ObservatoryContract $observatory = null
     ) {
-        $this->validator->isUpdate()->validate($attributes);
+        $this->validator->markAsUpdate()->validate($attributes);
+
         if ($this->validator->hasErrors()) {
             $message = new Message('Failed to validate supplied attributes', $this->validator);
 
