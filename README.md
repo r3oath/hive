@@ -1,4 +1,4 @@
-![Hive: Hexagonal Architecture Framework for Laravel](https://cloud.githubusercontent.com/assets/2805249/10295184/35e2d1fc-6c02-11e5-9bb8-a2fed9e4544d.png)
+![Hive: Hexagonal Architecture Framework for Laravel](https://cloud.githubusercontent.com/assets/2805249/10297516/6dbb0a76-6c17-11e5-945d-97e1a22ee6d2.png)
 
 # Current Build
 
