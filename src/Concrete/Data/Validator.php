@@ -3,8 +3,7 @@
 namespace R\Hive\Concrete\Data;
 
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
-use R\Hive\Concrete\Exceptions\ValidatorCreateRulesNotSuppliedException;
-use R\Hive\Concrete\Exceptions\ValidatorUpdateRulesNotSuppliedException;
+use R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException;
 use R\Hive\Contracts\Data\Validator as ValidatorContract;
 
 class Validator implements ValidatorContract
@@ -20,7 +19,7 @@ class Validator implements ValidatorContract
 
     public function getCreateRules()
     {
-        throw new ValidatorCreateRulesNotSuppliedException($this);
+        throw new ValidatorRulesNotSuppliedException($this, 'create');
     }
 
     public function getErrors()
@@ -30,7 +29,7 @@ class Validator implements ValidatorContract
 
     public function getUpdateRules()
     {
-        throw new ValidatorUpdateRulesNotSuppliedException($this);
+        throw new ValidatorRulesNotSuppliedException($this, 'update');
     }
 
     public function hasErrors()
@@ -38,7 +37,7 @@ class Validator implements ValidatorContract
         return $this->errors !== null;
     }
 
-    public function isUpdate()
+    public function markAsUpdate()
     {
         $this->update = true;
         return $this;
@@ -53,6 +52,9 @@ class Validator implements ValidatorContract
         if ($validator->fails()) {
             $this->errors = $validator->errors();
         }
+
+        // Reset the update flag back to it's default value.
+        $this->update = false;
 
         return $this;
     }

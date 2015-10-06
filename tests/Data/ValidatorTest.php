@@ -57,7 +57,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('getUpdateRules')->atLeast()->once()->andReturn([]);
         });
 
-        $dummy_validator->isUpdate()->validate(['foo' => 'bar']);
+        $dummy_validator->markAsUpdate()->validate(['foo' => 'bar']);
 
         $this->assertEquals(false, $dummy_validator->hasErrors());
     }
@@ -86,7 +86,8 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException R\Hive\Concrete\Exceptions\ValidatorCreateRulesNotSuppliedException
+     * @expectedException R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException
+     * @expectedExceptionMessageRegExp #create.*#
      */
     public function testValidatorCreateRulesNotSuppliedException()
     {
@@ -98,7 +99,8 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException R\Hive\Concrete\Exceptions\ValidatorUpdateRulesNotSuppliedException
+     * @expectedException R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException
+     * * @expectedExceptionMessageRegExp #update.*#
      */
     public function testValidatorUpdateRulesNotSuppliedException()
     {
@@ -106,6 +108,6 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
         $factory   = m::mock('Illuminate\Contracts\Validation\Factory');
 
         $dummy_validator = new Validator($factory);
-        $dummy_validator->isUpdate()->validate(['foo' => 'bar']);
+        $dummy_validator->markAsUpdate()->validate(['foo' => 'bar']);
     }
 }

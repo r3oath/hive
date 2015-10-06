@@ -38,8 +38,8 @@ interface Validator
     public function getUpdateRules();
 
     /**
-     * Whether the validation to occur is for an update.
-     * @return boolean
+     * Marks this validation request as an update.
+     * @return mixed
      */
-    public function isUpdate();
+    public function markAsUpdate();
 }
