@@ -13,7 +13,7 @@ interface FactoryInterface
      * Create a new instance given the attributes.
      *
      * @param OnCreateInterface $handler    The requesting class that will handle the result.
-     * @param array            $attributes The attributes of the new instance.
+     * @param array             $attributes The attributes of the new instance.
      *
      * @return object The new instance.
      */
@@ -28,7 +28,7 @@ interface FactoryInterface
      *
      * @param OnUpdateInterface $handler    The requesting class that will handle the result.
      * @param InstanceInterface $instance   The instance being updated.
-     * @param array            $attributes The new attributes for the instance.
+     * @param array             $attributes The new attributes for the instance.
      *
      * @return object The updated instance.
      */

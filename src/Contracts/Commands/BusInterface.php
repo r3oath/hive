@@ -2,8 +2,6 @@
 
 namespace R\Hive\Contracts\Commands;
 
-use R\Hive\Contracts\Commands\CommandInterface;
-
 interface BusInterface
 {
     /**

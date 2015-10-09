@@ -4,7 +4,6 @@ namespace R\Hive\Contracts\Observers;
 
 use R\Hive\Contracts\Data\MessageInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
-use R\Hive\Contracts\Observers\ObserverInterface;
 
 interface ObservatoryInterface
 {

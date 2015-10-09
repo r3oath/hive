@@ -2,8 +2,6 @@
 
 namespace R\Hive\Contracts\Data;
 
-use R\Hive\Contracts\Data\ValidatorInterface;
-
 interface MessageInterface
 {
     /**
