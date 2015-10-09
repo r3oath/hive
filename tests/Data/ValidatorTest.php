@@ -29,7 +29,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
                 $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
             });
 
-        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getCreateRules]', array($factory), function ($mock) {
+        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getCreateRules]', [$factory], function ($mock) {
             $mock->shouldReceive('getCreateRules')->atLeast()->once()->andReturn([]);
         });
 
@@ -53,7 +53,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
                 $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
             });
 
-        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getUpdateRules]', array($factory), function ($mock) {
+        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getUpdateRules]', [$factory], function ($mock) {
             $mock->shouldReceive('getUpdateRules')->atLeast()->once()->andReturn([]);
         });
 
@@ -76,7 +76,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
                 $mock->shouldReceive('make')->atLeast()->once()->andReturn($validator);
             });
 
-        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getCreateRules]', array($factory), function ($mock) {
+        $dummy_validator = m::mock('R\Hive\Concrete\Data\Validator[getCreateRules]', [$factory], function ($mock) {
             $mock->shouldReceive('getCreateRules')->atLeast()->once()->andReturn([]);
         });
 
@@ -92,7 +92,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     public function testValidatorCreateRulesNotSuppliedException()
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $factory   = m::mock('Illuminate\Contracts\Validation\Factory');
+        $factory = m::mock('Illuminate\Contracts\Validation\Factory');
 
         $dummy_validator = new Validator($factory);
         $dummy_validator->validate(['foo' => 'bar']);
@@ -105,7 +105,7 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     public function testValidatorUpdateRulesNotSuppliedException()
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
-        $factory   = m::mock('Illuminate\Contracts\Validation\Factory');
+        $factory = m::mock('Illuminate\Contracts\Validation\Factory');
 
         $dummy_validator = new Validator($factory);
         $dummy_validator->markAsUpdate()->validate(['foo' => 'bar']);

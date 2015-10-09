@@ -39,6 +39,6 @@ class Bus implements BusContract
             $class .= ucfirst($part);
         }
 
-        return $this->handlersNamespace() . '\\' . $class . 'Handler';
+        return $this->handlersNamespace().'\\'.$class.'Handler';
     }
 }

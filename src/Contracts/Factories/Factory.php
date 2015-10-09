@@ -11,9 +11,11 @@ interface Factory
 {
     /**
      * Create a new instance given the attributes.
-     * @param  OnCreateContract $handler    The requesting class that will handle the result.
-     * @param  array                 $attributes The attributes of the new instance.
-     * @return object                            The new instance.
+     *
+     * @param OnCreateContract $handler    The requesting class that will handle the result.
+     * @param array            $attributes The attributes of the new instance.
+     *
+     * @return object The new instance.
      */
     public function make(
         OnCreateContract $handler,
@@ -23,10 +25,12 @@ interface Factory
 
     /**
      * Update the given instance with the supplied attributes.
-     * @param  OnUpdateContract   $handler    The requesting class that will handle the result.
-     * @param  InstanceContract $instance   The instance being updated.
-     * @param  array                   $attributes The new attributes for the instance.
-     * @return object                              The updated instance.
+     *
+     * @param OnUpdateContract $handler    The requesting class that will handle the result.
+     * @param InstanceContract $instance   The instance being updated.
+     * @param array            $attributes The new attributes for the instance.
+     *
+     * @return object The updated instance.
      */
     public function update(
         OnUpdateContract $handler,

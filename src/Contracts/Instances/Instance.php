@@ -6,7 +6,8 @@ interface Instance
 {
     /**
      * Returns the id for the given instance.
-     * @return integer The instance id.
+     *
+     * @return int The instance id.
      */
     public function identity();
 }

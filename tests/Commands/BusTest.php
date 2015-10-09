@@ -42,7 +42,7 @@ class BusTest extends PHPUnit_Framework_TestCase
      */
     public function testNoSupportedHandlerFoundException()
     {
-        $bus     = new Bus;
+        $bus = new Bus();
         $command = m::mock(
             'R\Hive\Contracts\Commands\Command',
             function ($mock) {

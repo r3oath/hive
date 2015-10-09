@@ -6,7 +6,8 @@ interface Command
 {
     /**
      * A unique string-serial that describes this command.
-     * Eg: "create_new_user"
+     * Eg: "create_new_user".
+     *
      * @return string
      */
     public function serial();
