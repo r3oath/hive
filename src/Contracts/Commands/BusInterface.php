@@ -2,18 +2,18 @@
 
 namespace R\Hive\Contracts\Commands;
 
-use R\Hive\Contracts\Commands\Command as CommandContract;
+use R\Hive\Contracts\Commands\CommandInterface;
 
-interface Bus
+interface BusInterface
 {
     /**
      * Execute the given command and possibly return a result.
      *
-     * @param CommandContract $command The command to execute.
+     * @param CommandInterface $command The command to execute.
      *
      * @return mixed
      */
-    public function execute(CommandContract $command);
+    public function execute(CommandInterface $command);
 
     /**
      * Resolve the command handler for the given command serial.

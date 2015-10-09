@@ -2,15 +2,15 @@
 
 namespace R\Hive\Concrete\Data;
 
-use R\Hive\Contracts\Data\Message as MessageContract;
-use R\Hive\Contracts\Data\Validator as ValidatorContract;
+use R\Hive\Contracts\Data\MessageInterface;
+use R\Hive\Contracts\Data\ValidatorInterface;
 
-class Message implements MessageContract
+class Message implements MessageInterface
 {
     protected $message;
     protected $validator;
 
-    public function __construct($message, ValidatorContract $validator = null)
+    public function __construct($message, ValidatorInterface $validator = null)
     {
         $this->message = $message;
 
@@ -19,7 +19,7 @@ class Message implements MessageContract
         }
     }
 
-    public function attachValidator(ValidatorContract $validator)
+    public function attachValidator(ValidatorInterface $validator)
     {
         $this->validator = $validator;
     }

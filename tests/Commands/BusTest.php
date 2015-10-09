@@ -15,7 +15,7 @@ class BusTest extends PHPUnit_Framework_TestCase
         $expected_result = 'success';
 
         $handler = m::mock(
-            'R\Hive\Concrete\Contracts\Handlers\Handler',
+            'R\Hive\Concrete\Commands\Handlers\Handler[execute]',
             function ($mock) use ($expected_result) {
                 $mock->shouldReceive('execute')->atLeast()->once()->andReturn($expected_result);
             });
@@ -27,7 +27,7 @@ class BusTest extends PHPUnit_Framework_TestCase
             });
 
         $command = m::mock(
-            'R\Hive\Contracts\Commands\Command',
+            'R\Hive\Contracts\Commands\CommandInterface',
             function ($mock) {
                 $mock->shouldReceive('serial')->atLeast()->once()->andReturn('');
             });
@@ -44,7 +44,7 @@ class BusTest extends PHPUnit_Framework_TestCase
     {
         $bus = new Bus();
         $command = m::mock(
-            'R\Hive\Contracts\Commands\Command',
+            'R\Hive\Contracts\Commands\CommandInterface',
             function ($mock) {
                 $mock->shouldReceive('serial')->atLeast()->once()->andReturn('not_valid');
             });
@@ -61,7 +61,7 @@ class BusTest extends PHPUnit_Framework_TestCase
             });
 
         $command = m::mock(
-            'R\Hive\Contracts\Commands\Command',
+            'R\Hive\Contracts\Commands\CommandInterface',
             function ($mock) {
                 $mock->shouldReceive('serial')->atLeast()->once()->andReturn('');
             });

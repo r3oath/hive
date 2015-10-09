@@ -12,7 +12,7 @@ class MessageTest extends PHPUnit_Framework_TestCase
 
     public function testMessageAndValidatorConstruct()
     {
-        $validator = m::mock('R\Hive\Contracts\Data\Validator');
+        $validator = m::mock('R\Hive\Contracts\Data\ValidatorInterface');
 
         $test_message = 'test';
         $message = new Message($test_message, $validator);

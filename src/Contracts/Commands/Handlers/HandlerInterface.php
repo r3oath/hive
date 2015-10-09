@@ -2,9 +2,9 @@
 
 namespace R\Hive\Contracts\Commands\Handlers;
 
-use R\Hive\Contracts\Commands\Command as CommandContract;
+use R\Hive\Contracts\Commands\CommandInterface;
 
-interface Handler
+interface HandlerInterface
 {
     /**
      * Execute the given command and possibly return a result.
@@ -13,5 +13,5 @@ interface Handler
      *
      * @return mixed
      */
-    public function execute(CommandContract $command);
+    public function execute(CommandInterface $command);
 }

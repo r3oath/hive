@@ -2,7 +2,7 @@
 
 namespace R\Hive\Contracts\Commands;
 
-interface Command
+interface CommandInterface
 {
     /**
      * A unique string-serial that describes this command.

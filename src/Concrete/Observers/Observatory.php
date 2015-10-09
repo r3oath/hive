@@ -2,15 +2,15 @@
 
 namespace R\Hive\Concrete\Observers;
 
-use R\Hive\Contracts\Data\Message as MessageContract;
-use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
-use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
-use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
-use R\Hive\Contracts\Observers\Observatory as ObservatoryContract;
-use R\Hive\Contracts\Observers\Observer as ObserverContract;
+use R\Hive\Contracts\Data\MessageInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Observers\ObserverInterface;
 
-class Observatory implements ObservatoryContract
+class Observatory implements ObservatoryInterface
 {
     protected $observers = [];
 
@@ -19,66 +19,66 @@ class Observatory implements ObservatoryContract
         return $this->observers;
     }
 
-    public function notifyOnCreateFailed(MessageContract $message)
+    public function notifyOnCreateFailed(MessageInterface $message)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnCreateContract) {
+            if ($observer instanceof OnCreateInterface) {
                 $observer->createFailed($message);
             }
         }
     }
 
-    public function notifyOnCreateSucceeded(InstanceContract $instance)
+    public function notifyOnCreateSucceeded(InstanceInterface $instance)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnCreateContract) {
+            if ($observer instanceof OnCreateInterface) {
                 $observer->createSucceeded($instance);
             }
         }
     }
 
-    public function notifyOnDestroyFailed(MessageContract $message)
+    public function notifyOnDestroyFailed(MessageInterface $message)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnDestroyContract) {
+            if ($observer instanceof OnDestroyInterface) {
                 $observer->destroyFailed($message);
             }
         }
     }
 
-    public function notifyOnDestroySucceeded(InstanceContract $instance)
+    public function notifyOnDestroySucceeded(InstanceInterface $instance)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnDestroyContract) {
+            if ($observer instanceof OnDestroyInterface) {
                 $observer->destroySucceeded($instance);
             }
         }
     }
 
-    public function notifyOnUpdateFailed(MessageContract $message)
+    public function notifyOnUpdateFailed(MessageInterface $message)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnUpdateContract) {
+            if ($observer instanceof OnUpdateInterface) {
                 $observer->updateFailed($message);
             }
         }
     }
 
-    public function notifyOnUpdateSucceeded(InstanceContract $instance)
+    public function notifyOnUpdateSucceeded(InstanceInterface $instance)
     {
         foreach ($this->observers as $observer) {
-            if ($observer instanceof OnUpdateContract) {
+            if ($observer instanceof OnUpdateInterface) {
                 $observer->updateSucceeded($instance);
             }
         }
     }
 
-    public function registerObserver(ObserverContract $observer)
+    public function registerObserver(ObserverInterface $observer)
     {
         $this->observers[$observer->serial()] = $observer;
     }
 
-    public function unregisterObserver(ObserverContract $observer)
+    public function unregisterObserver(ObserverInterface $observer)
     {
         if (array_key_exists($observer->serial(), $this->observers)) {
             unset($this->observers[$observer->serial()]);

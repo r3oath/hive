@@ -3,12 +3,12 @@
 namespace R\Hive\Concrete\Commands;
 
 use R\Hive\Concrete\Exceptions\NoSupportedHandlerFoundException;
-use R\Hive\Contracts\Commands\Bus as BusContract;
-use R\Hive\Contracts\Commands\Command as CommandContract;
+use R\Hive\Contracts\Commands\BusInterface;
+use R\Hive\Contracts\Commands\CommandInterface;
 
-class Bus implements BusContract
+class Bus implements BusInterface
 {
-    public function execute(CommandContract $command)
+    public function execute(CommandInterface $command)
     {
         return $this
             ->resolveHandler($command->serial())

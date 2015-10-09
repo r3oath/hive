@@ -4,9 +4,9 @@ namespace R\Hive\Concrete\Data;
 
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException;
-use R\Hive\Contracts\Data\Validator as ValidatorContract;
+use R\Hive\Contracts\Data\ValidatorInterface;
 
-class Validator implements ValidatorContract
+class Validator implements ValidatorInterface
 {
     protected $errors = null;
     protected $factory = null;

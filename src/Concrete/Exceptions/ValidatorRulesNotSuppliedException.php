@@ -2,14 +2,14 @@
 
 namespace R\Hive\Concrete\Exceptions;
 
-use R\Hive\Contracts\Data\Validator as ValidatorContract;
+use R\Hive\Contracts\Data\ValidatorInterface;
 
 class ValidatorRulesNotSuppliedException extends DomainException
 {
     public $rules;
     public $name;
 
-    public function __construct(ValidatorContract $validator, $rules)
+    public function __construct(ValidatorInterface $validator, $rules)
     {
         $this->name = get_class($validator);
         $this->rules = $rules;

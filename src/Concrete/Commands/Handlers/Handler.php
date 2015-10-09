@@ -2,12 +2,12 @@
 
 namespace R\Hive\Concrete\Commands\Handlers;
 
-use R\Hive\Contracts\Commands\Command as CommandContract;
-use R\Hive\Contracts\Commands\Handlers\Handler as HandlerContract;
+use R\Hive\Contracts\Commands\CommandInterface;
+use R\Hive\Contracts\Commands\Handlers\HandlerInterface;
 
-class Handler implements HandlerContract
+class Handler implements HandlerInterface
 {
-    public function execute(CommandContract $command)
+    public function execute(CommandInterface $command)
     {
         return;
     }

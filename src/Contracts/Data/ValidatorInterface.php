@@ -2,7 +2,7 @@
 
 namespace R\Hive\Contracts\Data;
 
-interface Validator
+interface ValidatorInterface
 {
     /**
      * Validate the given attributes for the instance type associated.

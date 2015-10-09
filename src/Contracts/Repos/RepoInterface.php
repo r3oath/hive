@@ -2,10 +2,10 @@
 
 namespace R\Hive\Contracts\Repos;
 
-use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
-use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
-use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
 
 /**
  * Represents a  instance repository.
@@ -31,42 +31,42 @@ interface Repo
     /**
      * Create a new instance.
      *
-     * @param OnCreateContract $handler    The requesting class that will handle the result.
+     * @param OnCreateInterface $handler    The requesting class that will handle the result.
      * @param array            $attributes The attributes for the new instance.
      *
      * @return void
      */
     public function create(
-        OnCreateContract $handler,
+        OnCreateInterface $handler,
         $attributes = []
     );
 
     /**
      * Update the given instance.
      *
-     * @param OnUpdateContract $handler    The requesting class that will handle the result.
-     * @param InstanceContract $instance   The instance being updated.
+     * @param OnUpdateInterface $handler    The requesting class that will handle the result.
+     * @param InstanceInterface $instance   The instance being updated.
      * @param array            $attributes The attributes to be updated.
      *
      * @return void
      */
     public function update(
-        OnUpdateContract $handler,
-        InstanceContract $instance,
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
         $attributes = []
     );
 
     /**
      * Destroy the given instance.
      *
-     * @param OnDestroyContract $handler  The requesting class that will handle the result.
-     * @param InstanceContract  $instance The instance to be destroyed.
+     * @param OnDestroyInterface $handler  The requesting class that will handle the result.
+     * @param InstanceInterface  $instance The instance to be destroyed.
      *
      * @return void
      */
     public function destroy(
-        OnDestroyContract $handler,
-        InstanceContract $instance
+        OnDestroyInterface $handler,
+        InstanceInterface $instance
     );
 
     /**

@@ -2,9 +2,9 @@
 
 namespace R\Hive\Contracts\Data;
 
-use R\Hive\Contracts\Data\Validator as ValidatorContract;
+use R\Hive\Contracts\Data\ValidatorInterface;
 
-interface Message
+interface MessageInterface
 {
     /**
      * Get the human readable description of this message.
@@ -16,11 +16,11 @@ interface Message
     /**
      * Attach a validator instance to this message.
      *
-     * @param ValidatorContract $validator The validator.
+     * @param ValidatorInterface $validator The validator.
      *
      * @return void
      */
-    public function attachValidator(ValidatorContract $validator);
+    public function attachValidator(ValidatorInterface $validator);
 
     /**
      * Whether this message has an associated validator.

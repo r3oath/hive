@@ -6,6 +6,8 @@
 [![Coverage Status](https://coveralls.io/repos/r3oath/hive/badge.svg?branch=master&service=github)](https://coveralls.io/github/r3oath/hive?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/r3oath/hive/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/r3oath/hive/?branch=master)
 [![PHP version](https://badge.fury.io/ph/r3oath%2Fhive.svg)](http://badge.fury.io/ph/r3oath%2Fhive)
+[![StyleCI](https://styleci.io/repos/43109264/shield)](https://styleci.io/repos/43109264)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c/mini.png)](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c)
 
 # Installation
 
