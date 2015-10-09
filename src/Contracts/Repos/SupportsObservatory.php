@@ -8,14 +8,18 @@ interface SupportsObservatory
 {
     /**
      * Register an observatory class that will dispatch notifications.
-     * @param  ObservatoryContract $observatory The observatory.
+     *
+     * @param ObservatoryContract $observatory The observatory.
+     *
      * @return void
      */
     public function registerObservatory(ObservatoryContract $observatory);
 
     /**
      * Unregister an observatory class that no longer wishes to dispatch notifications.
-     * @param  ObservatoryContract $observatory The observatory.
+     *
+     * @param ObservatoryContract $observatory The observatory.
+     *
      * @return void
      */
     public function unregisterObservatory(ObservatoryContract $observatory);

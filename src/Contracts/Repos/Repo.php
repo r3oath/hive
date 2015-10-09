@@ -14,21 +14,26 @@ interface Repo
 {
     /**
      * Returns a collection of all the instances.
+     *
      * @return array
      */
     public function all();
 
     /**
      * Find and return the instance by the given id.
-     * @param  integer $id The instance id.
-     * @return mixed       Instance object, or null if not found.
+     *
+     * @param int $id The instance id.
+     *
+     * @return mixed Instance object, or null if not found.
      */
     public function find($id);
 
     /**
      * Create a new instance.
-     * @param  OnCreateContract $handler    The requesting class that will handle the result.
-     * @param  array                 $attributes The attributes for the new instance.
+     *
+     * @param OnCreateContract $handler    The requesting class that will handle the result.
+     * @param array            $attributes The attributes for the new instance.
+     *
      * @return void
      */
     public function create(
@@ -38,9 +43,11 @@ interface Repo
 
     /**
      * Update the given instance.
-     * @param  OnUpdateContract   $handler    The requesting class that will handle the result.
-     * @param  InstanceContract $instance   The instance being updated.
-     * @param  array                   $attributes The attributes to be updated.
+     *
+     * @param OnUpdateContract $handler    The requesting class that will handle the result.
+     * @param InstanceContract $instance   The instance being updated.
+     * @param array            $attributes The attributes to be updated.
+     *
      * @return void
      */
     public function update(
@@ -51,8 +58,10 @@ interface Repo
 
     /**
      * Destroy the given instance.
-     * @param  OnDestroyContract  $handler  The requesting class that will handle the result.
-     * @param  InstanceContract $instance The instance to be destroyed.
+     *
+     * @param OnDestroyContract $handler  The requesting class that will handle the result.
+     * @param InstanceContract  $instance The instance to be destroyed.
+     *
      * @return void
      */
     public function destroy(
@@ -62,7 +71,8 @@ interface Repo
 
     /**
      * Whether this repository supports an observatory.
-     * @return boolean
+     *
+     * @return bool
      */
     public function supportsObservatory();
 }

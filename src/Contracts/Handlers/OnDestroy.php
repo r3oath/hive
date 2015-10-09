@@ -9,14 +9,18 @@ interface OnDestroy
 {
     /**
      * Called when destroying an instance succeeds.
-     * @param  InstanceContract $instance A shallow reference to the deleted instance.
+     *
+     * @param InstanceContract $instance A shallow reference to the deleted instance.
+     *
      * @return mixed
      */
     public function destroySucceeded(InstanceContract $instance);
 
     /**
      * Called when destroying an instance fails.
-     * @param  MessageContract $message The associated error message/information.
+     *
+     * @param MessageContract $message The associated error message/information.
+     *
      * @return mixed
      */
     public function destroyFailed(MessageContract $message);

@@ -15,7 +15,7 @@ class MessageTest extends PHPUnit_Framework_TestCase
         $validator = m::mock('R\Hive\Contracts\Data\Validator');
 
         $test_message = 'test';
-        $message      = new Message($test_message, $validator);
+        $message = new Message($test_message, $validator);
 
         $this->assertEquals(true, $message->hasValidator());
         $this->assertEquals($validator, $message->getValidator());
@@ -25,7 +25,7 @@ class MessageTest extends PHPUnit_Framework_TestCase
     public function testMessageOnlyConstruct()
     {
         $test_message = 'test';
-        $message      = new Message($test_message);
+        $message = new Message($test_message);
 
         $this->assertEquals(false, $message->hasValidator());
         $this->assertEquals($test_message, $message->getMessage());

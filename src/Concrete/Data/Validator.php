@@ -8,9 +8,9 @@ use R\Hive\Contracts\Data\Validator as ValidatorContract;
 
 class Validator implements ValidatorContract
 {
-    protected $errors  = null;
+    protected $errors = null;
     protected $factory = null;
-    protected $update  = false;
+    protected $update = false;
 
     public function __construct(ValidationFactory $factory)
     {
@@ -40,6 +40,7 @@ class Validator implements ValidatorContract
     public function markAsUpdate()
     {
         $this->update = true;
+
         return $this;
     }
 

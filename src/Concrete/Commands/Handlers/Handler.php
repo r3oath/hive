@@ -9,6 +9,6 @@ class Handler implements HandlerContract
 {
     public function execute(CommandContract $command)
     {
-        return null;
+        return;
     }
 }
