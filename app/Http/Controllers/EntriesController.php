@@ -9,13 +9,13 @@ use App\Lib\Repos\EntryRepo;
 use Illuminate\Http\Request;
 use R\Hive\Concrete\Commands\Bus;
 use R\Hive\Concrete\Observers\Observatory;
-use R\Hive\Contracts\Data\Message as MessageContract;
-use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
-use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
-use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Data\MessageInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
 
-class EntriesController extends Controller implements OnCreateContract, OnUpdateContract, OnDestroyContract
+class EntriesController extends Controller implements OnCreateInterface, OnUpdateInterface, OnDestroyInterface
 {
     protected $repo;
     protected $bus;
@@ -35,12 +35,12 @@ class EntriesController extends Controller implements OnCreateContract, OnUpdate
         }
     }
 
-    public function createFailed(MessageContract $message)
+    public function createFailed(MessageInterface $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function createSucceeded(InstanceContract $instance)
+    public function createSucceeded(InstanceInterface $instance)
     {
         return $instance;
     }
@@ -55,12 +55,12 @@ class EntriesController extends Controller implements OnCreateContract, OnUpdate
         abort(404);
     }
 
-    public function destroyFailed(MessageContract $message)
+    public function destroyFailed(MessageInterface $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function destroySucceeded(InstanceContract $instance)
+    public function destroySucceeded(InstanceInterface $instance)
     {
         return ['message' => 'Successfully deleted entry!'];
     }
@@ -103,17 +103,17 @@ class EntriesController extends Controller implements OnCreateContract, OnUpdate
         abort(404);
     }
 
-    public function updateFailed(MessageContract $message)
+    public function updateFailed(MessageInterface $message)
     {
         return $this->formattedMessage($message);
     }
 
-    public function updateSucceeded(InstanceContract $instance)
+    public function updateSucceeded(InstanceInterface $instance)
     {
         return $instance;
     }
 
-    protected function formattedMessage(MessageContract $message)
+    protected function formattedMessage(MessageInterface $message)
     {
         if ($message->hasValidator()) {
             $data = [

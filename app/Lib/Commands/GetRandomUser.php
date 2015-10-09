@@ -2,9 +2,9 @@
 
 namespace App\Lib\Commands;
 
-use R\Hive\Contracts\Commands\Command as CommandContract;
+use R\Hive\Contracts\Commands\CommandInterface;
 
-class GetRandomUser implements CommandContract
+class GetRandomUser implements CommandInterface
 {
     public $entries;
 

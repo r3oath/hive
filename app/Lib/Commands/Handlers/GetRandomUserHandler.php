@@ -2,12 +2,12 @@
 
 namespace App\Lib\Commands\Handlers;
 
-use R\Hive\Contracts\Commands\Command as CommandContract;
-use R\Hive\Contracts\Commands\Handlers\Handler as HandlerContract;
+use R\Hive\Contracts\Commands\CommandInterface;
+use R\Hive\Contracts\Commands\Handlers\HandlerInterface;
 
-class GetRandomUserHandler implements HandlerContract
+class GetRandomUserHandler implements HandlerInterface
 {
-    public function execute(CommandContract $command)
+    public function execute(CommandInterface $command)
     {
         $entries = $command->entries;
 

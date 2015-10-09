@@ -4,20 +4,20 @@ namespace App\Lib\Repos;
 
 use App\Entry;
 use App\Lib\Factories\EntryFactory;
-use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
-use R\Hive\Contracts\Handlers\OnDestroy as OnDestroyContract;
-use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
-use R\Hive\Contracts\Observers\Observatory as ObservatoryContract;
-use R\Hive\Contracts\Repos\Repo as RepoContract;
-use R\Hive\Contracts\Repos\SupportsObservatory as SupportsObservatoryContract;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Repos\RepoInterface;
+use R\Hive\Contracts\Repos\SupportsObservatoryInterface;
 
 // This repo makes use of Laravels Eloquent Model handling framework
 // to fetch all instances, search for a particular by ID etc.
 //
 // It also delegates the creation and modification of instances
 // to the respective factory.
-class EntryRepo implements RepoContract, SupportsObservatoryContract
+class EntryRepo implements RepoInterface, SupportsObservatoryInterface
 {
     protected $factory;
     protected $observatory;
@@ -34,7 +34,7 @@ class EntryRepo implements RepoContract, SupportsObservatoryContract
     }
 
     public function create(
-        OnCreateContract $handler,
+        OnCreateInterface $handler,
         $attributes = []
     ) {
         return $this->factory->make(
@@ -45,8 +45,8 @@ class EntryRepo implements RepoContract, SupportsObservatoryContract
     }
 
     public function destroy(
-        OnDestroyContract $handler,
-        InstanceContract $instance
+        OnDestroyInterface $handler,
+        InstanceInterface $instance
     ) {
         $instance->delete();
 
@@ -62,7 +62,7 @@ class EntryRepo implements RepoContract, SupportsObservatoryContract
         return Entry::find($id);
     }
 
-    public function registerObservatory(ObservatoryContract $observatory)
+    public function registerObservatory(ObservatoryInterface $observatory)
     {
         $this->observatory = $observatory;
     }
@@ -72,14 +72,14 @@ class EntryRepo implements RepoContract, SupportsObservatoryContract
         return true;
     }
 
-    public function unregisterObservatory(ObservatoryContract $observatory)
+    public function unregisterObservatory(ObservatoryInterface $observatory)
     {
         $this->observatory = null;
     }
 
     public function update(
-        OnUpdateContract $handler,
-        InstanceContract $instance,
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
         $attributes = []
     ) {
         return $this->factory->update(

@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
+use R\Hive\Contracts\Instances\InstanceInterface;
 
-class Entry extends Model implements InstanceContract
+class Entry extends Model implements InstanceInterface
 {
     protected $fillable = ['name', 'content'];
 

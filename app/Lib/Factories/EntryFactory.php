@@ -5,13 +5,13 @@ namespace App\Lib\Factories;
 use App\Entry;
 use App\Lib\Data\EntryValidator;
 use R\Hive\Concrete\Data\Message;
-use R\Hive\Contracts\Factories\Factory;
-use R\Hive\Contracts\Handlers\OnCreate as OnCreateContract;
-use R\Hive\Contracts\Handlers\OnUpdate as OnUpdateContract;
-use R\Hive\Contracts\Instances\Instance as InstanceContract;
-use R\Hive\Contracts\Observers\Observatory as ObservatoryContract;
+use R\Hive\Contracts\Factories\FactoryInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
 
-class EntryFactory implements Factory
+class EntryFactory implements FactoryInterface
 {
     protected $validator;
 
@@ -23,9 +23,9 @@ class EntryFactory implements Factory
     // Here you create your instances in what ever fashion suit your needs.
     // I've used Laravels built in Model methods to do so.
     public function make(
-        OnCreateContract $handler,
+        OnCreateInterface $handler,
         $attributes = [],
-        ObservatoryContract $observatory = null
+        ObservatoryInterface $observatory = null
     ) {
         // If the supplied attributes are invalid, we can let the requesting
         // class know something went wrong with making this instance and pass
@@ -57,10 +57,10 @@ class EntryFactory implements Factory
     // Almost exactly the same as the make method, except here we just update
     // the attributes on the instance.
     public function update(
-        OnUpdateContract $handler,
-        InstanceContract $instance,
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
         $attributes = [],
-        ObservatoryContract $observatory = null
+        ObservatoryInterface $observatory = null
     ) {
         $this->validator->markAsUpdate()->validate($attributes);
 
