@@ -10,7 +10,7 @@ use R\Hive\Contracts\Instances\InstanceInterface;
 /**
  * Represents a  instance repository.
  */
-interface Repo
+interface RepoInterface
 {
     /**
      * Returns a collection of all the instances.
@@ -32,7 +32,7 @@ interface Repo
      * Create a new instance.
      *
      * @param OnCreateInterface $handler    The requesting class that will handle the result.
-     * @param array            $attributes The attributes for the new instance.
+     * @param array             $attributes The attributes for the new instance.
      *
      * @return void
      */
@@ -46,7 +46,7 @@ interface Repo
      *
      * @param OnUpdateInterface $handler    The requesting class that will handle the result.
      * @param InstanceInterface $instance   The instance being updated.
-     * @param array            $attributes The attributes to be updated.
+     * @param array             $attributes The attributes to be updated.
      *
      * @return void
      */
