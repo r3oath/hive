@@ -7,7 +7,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/r3oath/hive/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/r3oath/hive/?branch=master)
 [![PHP version](https://badge.fury.io/ph/r3oath%2Fhive.svg)](http://badge.fury.io/ph/r3oath%2Fhive)
 [![StyleCI](https://styleci.io/repos/43109264/shield)](https://styleci.io/repos/43109264)
-![Downloads/Month](https://img.shields.io/packagist/dm/r3oath/hive.svg)
 ![License MIT](https://img.shields.io/packagist/l/r3oath/hive.svg)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c/big.png)](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c)
