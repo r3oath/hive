@@ -22,7 +22,7 @@ $ composer require r3oath/hive
 
 # Docs
 
-Docs will be coming soon.
+Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
 
 # Example
 
