@@ -1,0 +1,13 @@
+site_name: Hive
+markdown_extensions: [admonition]
+theme: readthedocs
+pages:
+- Home: 'index.md'
+- Starting: 'starting.md'
+- Commands: 'commands.md'
+- Data: 'data.md'
+- Factories: 'factories.md'
+- Handlers: 'handlers.md'
+- Instances: 'instances.md'
+- Observers: 'observers.md'
+- Repos: 'repos.md'
