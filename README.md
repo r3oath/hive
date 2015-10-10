@@ -17,7 +17,7 @@
 Installation is simple, simply issue the following composer command
 
 ```bash
-$ composer require r3oath/hive
+composer require r3oath/hive
 ```
 
 # Docs
