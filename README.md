@@ -8,6 +8,7 @@
 [![PHP version](https://badge.fury.io/ph/r3oath%2Fhive.svg)](http://badge.fury.io/ph/r3oath%2Fhive)
 [![StyleCI](https://styleci.io/repos/43109264/shield)](https://styleci.io/repos/43109264)
 ![License MIT](https://img.shields.io/packagist/l/r3oath/hive.svg)
+[![Documentation Status](https://readthedocs.org/projects/hive/badge/?version=latest)](http://hive.readthedocs.org/en/latest/?badge=latest)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c/big.png)](https://insight.sensiolabs.com/projects/8b6b45d7-125c-4c56-ae1c-bea14f98ab4c)
 
