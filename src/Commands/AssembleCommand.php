@@ -15,7 +15,7 @@ class AssembleCommand extends Command
     {
         $name = $this->argument('name');
 
-        $this->call('hive:instance', ['name' => $name, '-e' => 'bar']);
+        $this->call('hive:instance', ['name' => $name, '-e' => 'bar', '-m' => 'bar']);
         $this->call('hive:factory', ['name' => $name, '-i' => 'bar']);
         $this->call('hive:repo', ['name' => $name, '-o' => 'bar']);
     }
