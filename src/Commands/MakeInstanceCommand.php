@@ -2,8 +2,8 @@
 
 namespace R\Hive\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeInstanceCommand extends GeneratorCommand
