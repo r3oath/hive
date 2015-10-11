@@ -2,7 +2,6 @@
 
 namespace R\Hive\Commands;
 
-use R\Hive\Commands\HiveGeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeFactoryCommand extends HiveGeneratorCommand
@@ -60,7 +59,8 @@ class MakeFactoryCommand extends HiveGeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

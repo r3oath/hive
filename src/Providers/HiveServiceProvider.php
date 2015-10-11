@@ -14,10 +14,10 @@ class HiveServiceProvider extends ServiceProvider
     protected $defer = true;
 
     protected $commands = [
-        'Assemble' => 'command.assemble',
-        'MakeFactory' => 'command.make.factory',
-        'MakeInstance' => 'command.make.instance',
-        'MakeRepo' => 'command.make.repo',
+        'Assemble'      => 'command.assemble',
+        'MakeFactory'   => 'command.make.factory',
+        'MakeInstance'  => 'command.make.instance',
+        'MakeRepo'      => 'command.make.repo',
         'MakeValidator' => 'command.make.validator',
     ];
 
