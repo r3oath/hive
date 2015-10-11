@@ -77,7 +77,7 @@ class MakeFactoryCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-            ['validator', 'v', InputOption::VALUE_NONE, 'Create a new associated validator.'],
+            ['validator', 'i', InputOption::VALUE_NONE, 'Create a new associated validator.'],
         ];
     }
 }
