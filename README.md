@@ -28,7 +28,7 @@ Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
 
 Hive comes with its own Service Provider that exposes a few new Artisan commands that make generating concrete implementations faster.
 
-To enable it, simply add the following line into your `config\app.php` under the `'providers'` array
+To enable it, simply append the following line to the `'providers'` array inside `config\app.php`.
 
 ```php
 R\Hive\Providers\HiveServiceProvider::class,
