@@ -28,13 +28,19 @@ Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
 
 If you're like most developers and hate having to repeat yourself writing code, you're in luck! Hive comes with it's own Service Provider that exposes a few new Artisan commands that make generating concrete implementations faster.
 
-The quickest way to setup a new collection of resources/classes for a model/instance, is to fire off
+To enable it, simply add the following line into your `config\app.php` under the `'providers'` array
 
-```bash
-php artisan hive:assemble Model
+```php
+R\Hive\Providers\HiveServiceProvider::class,
 ```
 
-In the example above, replace **Model** with the name of your instance. `hive:assemble` will create a new instance, migration, validator, repo and factory for **Model**. The Hive specific classes will be placed in the `app\Lib` directory, while the rest in the standard Laravel locations.
+The quickest way to setup a new collection of resources for a model is to fire off the the following command
+
+```bash
+php artisan hive:assemble X
+```
+
+In the example above, replace **X** with the name of your model. `hive:assemble` will create a new model, migration, validator, repo and factory for **Model**. The Hive specific classes will be placed in the `app\Lib` directory, while the rest will be in the standard Laravel locations.
 
 # Example
 
