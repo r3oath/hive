@@ -1,0 +1,67 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceDummyClass;
+use DummyRootNamespaceLib\Factories\DummyClassFactory;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Repos\RepoInterface;
+
+class DummyClassRepo implements RepoInterface
+{
+    protected $factory;
+
+    public function __construct(DummyClassFactory $factory)
+    {
+        $this->factory = $factory;
+    }
+
+    public function all()
+    {
+        return DummyClass::all();
+    }
+
+    public function create(
+        OnCreateInterface $handler,
+        $attributes = []
+    ) {
+        return $this->factory->make(
+            $handler,
+            $attributes,
+        );
+    }
+
+    public function destroy(
+        OnDestroyInterface $handler,
+        InstanceInterface $instance
+    ) {
+        $instance->delete();
+
+        return $handler->destroySucceeded($instance);
+    }
+
+    public function find($id)
+    {
+        return DummyClass::find($id);
+    }
+
+    public function supportsObservatory()
+    {
+        return false;
+    }
+
+    public function update(
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
+        $attributes = []
+    ) {
+        return $this->factory->update(
+            $handler,
+            $instance,
+            $attributes,
+        );
+    }
+}

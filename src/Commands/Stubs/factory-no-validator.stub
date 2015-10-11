@@ -1,0 +1,65 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceDummyClass;
+use R\Hive\Concrete\Data\Message;
+use R\Hive\Contracts\Factories\FactoryInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
+
+class DummyClassFactory implements FactoryInterface
+{
+    /**
+     * Create a new DummyClass instance.
+     * @param  OnCreateInterface         $handler     The requesting class.
+     * @param  array                     $attributes  The attributes for the new instance.
+     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     * @return mixed
+     */
+    public function make(
+        OnCreateInterface $handler,
+        $attributes = [],
+        ObservatoryInterface $observatory = null
+    ) {
+        // ...
+        $instance = new DummyClass;
+        $instance->fill($attributes);
+        $instance->save();
+        // ...
+
+        if ($observatory !== null) {
+            $observatory->notifyOnCreateSucceeded($instance);
+        }
+
+        return $handler->createSucceeded($instance);
+    }
+
+    /**
+     * Update the given DummyClass instance.
+     * @param  OnUpdateInterface         $handler     The requesting class.
+     * @param  InstanceInterface         $instance    The instance being updated.
+     * @param  array                     $attributes  The new attributes for the instance.
+     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     * @return mixed
+     */
+    public function update(
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
+        $attributes = [],
+        ObservatoryInterface $observatory = null
+    ) {
+        // ...
+        $instance->fill($attributes);
+        $instance->save();
+        // ...
+
+        if ($observatory !== null) {
+            $observatory->notifyOnUpdateSucceeded($instance);
+        }
+
+        return $handler->updateSucceeded($instance);
+    }
+}

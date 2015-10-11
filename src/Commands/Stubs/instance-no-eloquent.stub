@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use R\Hive\Contracts\Instances\InstanceInterface;
+
+class DummyClass implements InstanceInterface
+{
+    /**
+     * The unique identifier for this instance.
+     * @return mixed
+     */
+    public function identity()
+    {
+        // WARNING!
+        // This should be unique for each instance of this class.
+        return 0;
+    }
+}

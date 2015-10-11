@@ -1,0 +1,87 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceDummyClass;
+use DummyRootNamespaceLib\Factories\DummyClassFactory;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Repos\RepoInterface;
+use R\Hive\Contracts\Repos\SupportsObservatoryInterface;
+
+class DummyClassRepo implements RepoInterface, SupportsObservatoryInterface
+{
+    protected $factory;
+    protected $observatory;
+
+    public function __construct(DummyClassFactory $factory)
+    {
+        $this->factory = $factory;
+        $this->observatory = null;
+    }
+
+    public function all()
+    {
+        return DummyClass::all();
+    }
+
+    public function create(
+        OnCreateInterface $handler,
+        $attributes = []
+    ) {
+        return $this->factory->make(
+            $handler,
+            $attributes,
+            $this->observatory
+        );
+    }
+
+    public function destroy(
+        OnDestroyInterface $handler,
+        InstanceInterface $instance
+    ) {
+        $instance->delete();
+
+        if ($this->observatory !== null) {
+            $this->observatory->notifyOnDestroySucceeded($instance);
+        }
+
+        return $handler->destroySucceeded($instance);
+    }
+
+    public function find($id)
+    {
+        return DummyClass::find($id);
+    }
+
+    public function registerObservatory(ObservatoryInterface $observatory)
+    {
+        $this->observatory = $observatory;
+    }
+
+    public function supportsObservatory()
+    {
+        return true;
+    }
+
+    public function unregisterObservatory(ObservatoryInterface $observatory)
+    {
+        $this->observatory = null;
+    }
+
+    public function update(
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
+        $attributes = []
+    ) {
+        return $this->factory->update(
+            $handler,
+            $instance,
+            $attributes,
+            $this->observatory
+        );
+    }
+}
