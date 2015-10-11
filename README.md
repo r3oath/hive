@@ -26,7 +26,7 @@ Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
 
 # Quick-fire
 
-If you're like most developers and hate having to repeat yourself writing code, you're in luck! Hive comes with it's own Service Provider that exposes a few new Artisan commands that make generating concrete implementations faster.
+Hive comes with its own Service Provider that exposes a few new Artisan commands that make generating concrete implementations faster.
 
 To enable it, simply add the following line into your `config\app.php` under the `'providers'` array
 
