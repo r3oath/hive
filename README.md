@@ -2,21 +2,21 @@
 
 # Example app installation.
 
-If you just want to install this example app and not clone the entire Hive repo, simply issue the following command, **hive-example-app** being the folder you'd like it intalled into.
+If you want to install the example app and not clone the entire Hive repo, simply issue the following command.
 
 ```bash
-$ git clone -b example-app --single-branch https://github.com/r3oath/hive.git hive-example-app
+git clone -b example-app --single-branch https://github.com/r3oath/hive.git hive-example-app
 ```
 
-Once you have the example app cloned, issue the following commands inside the example app directory, or simply run the included `setup.sh` file which will do this automatically for you.
+Once cloned, simply run the included `setup.sh` file or issue the following commands...
 
 ```bash
-$ composer install
-$ npm install
-$ gulp
+composer install
+npm install
+gulp
 ```
 
-You'll need to setup your `.env`. At a very minimum use the following 
+You'll need to setup your `.env`. At a very minimum use the following... 
 
 ```
 APP_ENV=local
@@ -25,17 +25,19 @@ APP_KEY=SomeString
 DB_CONNECTION=sqlite
 ```` 
 
-and run
+and then run...
 
 ```bash
-$ php artisan key:generate
-$ touch database/database.sqlite
-$ php artisan migrate --seed
-$ php artisan serve
+php artisan key:generate
+touch database/database.sqlite
+php artisan migrate --seed
+php artisan serve
 ```
 
-You should now be able to access the example app at `localhost:8000`
+You should now be able to access the example app at `localhost:8000`!
 
-To see how Hive has been implemented in this example, have a look in the `app\Lib` directory, as well as the `app\Http\Controllers\EntriesController.php` controller.
+To see how Hive has been implemented, check out the `app\Lib` directory as well as the `app\Http\Controllers\EntriesController.php` controller.
 
-Enjoy!
+# Documentation
+
+If you want to learn more about Hive, check out the [documentation](http://hive.readthedocs.org).
