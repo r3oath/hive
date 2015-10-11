@@ -2,11 +2,10 @@
 
 namespace R\Hive\Commands;
 
-use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
+use R\Hive\Commands\HiveGeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-class MakeRepoCommand extends GeneratorCommand
+class MakeRepoCommand extends HiveGeneratorCommand
 {
     /**
      * The console command name.
