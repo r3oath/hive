@@ -14,7 +14,7 @@ class DummyClass extends Model implements InstanceInterface
     protected $fillable = [];
 
     /**
-     * Automagic date casts to Carbon instances.
+     * Automatically cast the given date values to carbon instances.
      * @var array
      */
     protected $dates = [];
