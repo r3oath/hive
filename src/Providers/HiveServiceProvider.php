@@ -2,7 +2,12 @@
 
 namespace R\Hive\Providers;
 
-use Illuminate\Support;
+use Illuminate\Support\ServiceProvider;
+use R\Hive\Commands\AssembleCommand;
+use R\Hive\Commands\MakeFactoryCommand;
+use R\Hive\Commands\MakeInstanceCommand;
+use R\Hive\Commands\MakeRepoCommand;
+use R\Hive\Commands\MakeValidatorCommand;
 
 class HiveServiceProvider extends ServiceProvider
 {
