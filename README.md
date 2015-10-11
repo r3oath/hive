@@ -24,6 +24,18 @@ composer require r3oath/hive
 
 Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
 
+# Quick-fire
+
+If you're like most developers and hate having to repeat yourself writing code, you're in luck! Hive comes with it's own Service Provider that exposes a few new Artisan commands that make generating concrete implementations faster.
+
+The quickest way to setup a new collection of resources/classes for a model/instance, is to fire off
+
+```bash
+php artisan hive:assemble Model
+```
+
+In the example above, replace **Model** with the name of your instance. `hive:assemble` will create a new instance, migration, validator, repo and factory for **Model**. The Hive specific classes will be placed in the `app\Lib` directory, while the rest in the standard Laravel locations.
+
 # Example
 
 To play with an example implementation of Hive, check out the `example-app` branch of this repo.
