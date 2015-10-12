@@ -6,6 +6,8 @@ use Illuminate\Console\GeneratorCommand;
 
 class HiveGeneratorCommand extends GeneratorCommand
 {
+    protected $compound = null;
+
     protected function getPath($name)
     {
         $name = str_replace($this->laravel->getNamespace(), '', $name);
@@ -17,5 +19,17 @@ class HiveGeneratorCommand extends GeneratorCommand
     protected function getStub()
     {
         return;
+    }
+
+    public function fire()
+    {
+        if($this->compound !== null) {
+            if (parent::fire() !== false) {
+                if ($this->option($this->compound)) {
+                    $name = $this->argument('name');
+                    $this->call("hive:{$this->compound}", ['name' => $name]);
+                }
+            }
+        }
     }
 }

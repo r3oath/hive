@@ -28,19 +28,11 @@ class MakeFactoryCommand extends HiveGeneratorCommand
     protected $type = 'Factory';
 
     /**
-     * Execute the console command.
+     * The compound command to fire after the parent succeeds.
      *
-     * @return void
+     * @var string
      */
-    public function fire()
-    {
-        if (parent::fire() !== false) {
-            if ($this->option('validator')) {
-                $name = $this->argument('name');
-                $this->call('hive:validator', ['name' => $name]);
-            }
-        }
-    }
+    protected $compound = 'validator';
 
     /**
      * Get the stub file for the generator.

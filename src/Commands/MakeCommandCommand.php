@@ -28,19 +28,11 @@ class MakeCommandCommand extends HiveGeneratorCommand
     protected $type = 'Command';
 
     /**
-     * Execute the console command.
+     * The compound command to fire after the parent succeeds.
      *
-     * @return void
+     * @var string
      */
-    public function fire()
-    {
-        if (parent::fire() !== false) {
-            if ($this->option('handler')) {
-                $name = $this->argument('name');
-                $this->call('hive:handler', ['name' => $name]);
-            }
-        }
-    }
+    protected $compound = 'handler';
 
     /**
      * Get the stub file for the generator.
