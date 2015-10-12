@@ -40,7 +40,7 @@ The quickest way to setup a new collection of resources for a model is to fire o
 php artisan hive:assemble X
 ```
 
-In the example above, replace **X** with the name of your model. `hive:assemble` will create a new model, migration, validator, repo, factory and controller for **Model**. Off course this can also be generated seperately through artisan:
+In the example above, replace **X** with the name of your model. `hive:assemble` will create a new ***model***, ***migration***, ***validator***, ***repo***, ***factory*** and ***controller*** for **Model**. Each of these can also be generated seperately through artisan:
 
 - hive:assemble
 - hive:command
