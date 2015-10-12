@@ -72,7 +72,7 @@ class MakeCommandCommand extends HiveGeneratorCommand
     protected function getOptions()
     {
         return [
-            ['handler', 'h', InputOption::VALUE_NONE, 'Create a handler for this command.'],
+            ['handler', 'H', InputOption::VALUE_NONE, 'Create a handler for this command.'],
         ];
     }
 }
