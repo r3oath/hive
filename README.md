@@ -42,7 +42,6 @@ php artisan hive:assemble X
 
 In the example above, replace **X** with the name of your model. `hive:assemble` will create a new ***model***, ***migration***, ***validator***, ***repo***, ***factory*** and ***controller*** for **Model**. Each of these can also be generated seperately through artisan:
 
-- hive:assemble
 - hive:command
 - hive:controller
 - hive:factory
