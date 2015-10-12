@@ -23,7 +23,7 @@ class HiveGeneratorCommand extends GeneratorCommand
 
     public function fire()
     {
-        if($this->compound !== null) {
+        if ($this->compound !== null) {
             if (parent::fire() !== false) {
                 if ($this->option($this->compound)) {
                     $name = $this->argument('name');
