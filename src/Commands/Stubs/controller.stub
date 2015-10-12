@@ -1,0 +1,195 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyRootNamespaceHttp\Controllers\Controller;
+use DummyRootNamespaceLib\Repos\DummyClassRepo;
+use Illuminate\Http\Request;
+use R\Hive\Contracts\Data\MessageInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnDestroyInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+
+class DummyClassController extends Controller implements OnCreateInterface, OnUpdateInterface, OnDestroyInterface
+{
+    protected $repo;
+
+    /**
+     * Constructs a new controller with reference to a DummyClassRepo.
+     *
+     * @param DummyClassRepo $repo The associated repo.
+     */
+    public function __construct(DummyClassRepo $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    /**
+     * Called when the repo create request fails.
+     *
+     * @param MessageInterface $message The associated failure message.
+     *
+     * @return mixed
+     */
+    public function createFailed(MessageInterface $message)
+    {
+        //
+    }
+
+    /**
+     * Called when the repo create method succeeds.
+     *
+     * @param InstanceInterface $instance The associated instance.
+     *
+     * @return mixed
+     */
+    public function createSucceeded(InstanceInterface $instance)
+    {
+        //
+    }
+
+    /**
+     * Called when the repo update request fails.
+     *
+     * @param MessageInterface $message The associated failure message.
+     *
+     * @return mixed
+     */
+    public function updateFailed(MessageInterface $message)
+    {
+        //
+    }
+
+    /**
+     * Called when the repo update method succeeds.
+     *
+     * @param InstanceInterface $instance The associated instance.
+     *
+     * @return mixed
+     */
+    public function updateSucceeded(InstanceInterface $instance)
+    {
+        //
+    }
+
+    /**
+     * Called when the repo destroy request fails.
+     *
+     * @param MessageInterface $message The associated failure message.
+     *
+     * @return mixed
+     */
+    public function destroyFailed(MessageInterface $message)
+    {
+        //
+    }
+
+    /**
+     * Called when the repo destroy method succeeds.
+     *
+     * @param InstanceInterface $instance The associated instance.
+     *
+     * @return mixed
+     */
+    public function destroySucceeded(InstanceInterface $instance)
+    {
+        //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return $this->repo->all();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $instance = $this->repo->find($id);
+        if ($instance !== null) {
+            //
+        }
+
+        abort(404);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return $this->repo->create($this, $request->all());
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $instance = $this->repo->find($id);
+        if ($instance !== null) {
+            return $this->repo->update($this, $instance, $request->all());
+        }
+
+        abort(404);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $instance = $this->repo->find($id);
+        if ($instance !== null) {
+            return $this->repo->destroy($this, $instance);
+        }
+
+        abort(404);
+    }
+}

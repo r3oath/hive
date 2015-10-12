@@ -18,12 +18,13 @@ class AssembleCommand extends Command
         $this->call('hive:instance', ['name' => $name, '-e' => 'bar', '-m' => 'bar']);
         $this->call('hive:factory', ['name' => $name, '-i' => 'bar']);
         $this->call('hive:repo', ['name' => $name, '-o' => 'bar']);
+        $this->call('hive:controller', ['name' => $name]);
     }
 
     protected function getArguments()
     {
         return [
-            ['name', InputArgument::REQUIRED, 'The name of the class.'],
+            ['name', InputArgument::REQUIRED, 'The name of the instance.'],
         ];
     }
 }
