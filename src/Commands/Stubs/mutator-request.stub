@@ -1,0 +1,31 @@
+<?php
+
+namespace DummyNamespace;
+
+use R\Hive\Contracts\Data\MutatorInterface;
+use Illuminate\Http\Request;
+
+class DummyClassMutator implements MutatorInterface
+{
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function get($key)
+    {
+        return $this->request->get($key);
+    }
+
+    public function has($key)
+    {
+        return $this->request->has($key);
+    }
+
+    public function set($key, $value)
+    {
+        // Not required.
+    }
+}

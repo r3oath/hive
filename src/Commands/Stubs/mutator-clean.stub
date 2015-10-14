@@ -1,0 +1,28 @@
+<?php
+
+namespace DummyNamespace;
+
+use R\Hive\Contracts\Data\MutatorInterface;
+
+class DummyClassMutator implements MutatorInterface
+{
+    public function __construct()
+    {
+        //
+    }
+
+    public function get($key)
+    {
+        //
+    }
+
+    public function has($key)
+    {
+        //
+    }
+
+    public function set($key, $value)
+    {
+        //
+    }
+}

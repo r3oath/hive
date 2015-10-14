@@ -11,6 +11,7 @@ use R\Hive\Commands\MakeHandlerCommand;
 use R\Hive\Commands\MakeInstanceCommand;
 use R\Hive\Commands\MakeRepoCommand;
 use R\Hive\Commands\MakeValidatorCommand;
+use R\Hive\Commands\MakeMutatorCommand;
 
 class HiveServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,7 @@ class HiveServiceProvider extends ServiceProvider
         'MakeController' => 'command.make.controller',
         'MakeCommand'    => 'command.make.command',
         'MakeHandler'    => 'command.make.handler',
+        'MakeMutator'    => 'command.make.mutator',
     ];
 
     public function register()
@@ -91,6 +93,13 @@ class HiveServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.make.handler', function ($app) {
             return new MakeHandlerCommand($app['files']);
+        });
+    }
+
+    protected function registerMakeMutatorCommand()
+    {
+        $this->app->singleton('command.make.mutator', function ($app) {
+            return new MakeMutatorCommand($app['files']);
         });
     }
 

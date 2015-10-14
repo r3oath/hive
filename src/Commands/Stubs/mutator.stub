@@ -1,0 +1,32 @@
+<?php
+
+namespace DummyNamespace;
+
+use R\Hive\Contracts\Data\MutatorInterface;
+
+class DummyClassMutator implements MutatorInterface
+{
+    protected $store;
+
+    public function __construct($data = [])
+    {
+        $this->store = $data;
+    }
+
+    public function get($key)
+    {
+        return $this->store[$key];
+    }
+
+    public function has($key)
+    {
+        return
+            isset($this->store[$key])
+            || array_key_exists($key, $this->store);
+    }
+
+    public function set($key, $value)
+    {
+        $this->store[$key] = $value;
+    }
+}
