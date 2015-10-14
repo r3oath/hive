@@ -2,6 +2,8 @@
 
 namespace R\Hive\Commands;
 
+use Symfony\Component\Console\Input\InputOption;
+
 class MakeMutatorCommand extends HiveGeneratorCommand
 {
     /**
@@ -44,7 +46,7 @@ class MakeMutatorCommand extends HiveGeneratorCommand
     {
         if ($this->option('request')) {
             return __DIR__.'/stubs/mutator-request.stub';
-        } else if ($this->option('clean')) {
+        } elseif ($this->option('clean')) {
             return __DIR__.'/stubs/mutator-clean.stub';
         } else {
             return __DIR__.'/stubs/mutator.stub';
