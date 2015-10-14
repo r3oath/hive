@@ -18,7 +18,7 @@ interface MutatorInterface
      *
      * @param string $key The key to check for.
      *
-     * @return boolean True if the key->value pair exists.
+     * @return bool True if the key->value pair exists.
      */
     public function has($key);
 

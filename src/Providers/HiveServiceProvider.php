@@ -9,9 +9,9 @@ use R\Hive\Commands\MakeControllerCommand;
 use R\Hive\Commands\MakeFactoryCommand;
 use R\Hive\Commands\MakeHandlerCommand;
 use R\Hive\Commands\MakeInstanceCommand;
+use R\Hive\Commands\MakeMutatorCommand;
 use R\Hive\Commands\MakeRepoCommand;
 use R\Hive\Commands\MakeValidatorCommand;
-use R\Hive\Commands\MakeMutatorCommand;
 
 class HiveServiceProvider extends ServiceProvider
 {
