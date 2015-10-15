@@ -40,7 +40,9 @@ The quickest way to setup a new collection of resources for a model is to fire o
 php artisan hive:assemble X
 ```
 
-In the example above, replace **X** with the name of your model. `hive:assemble` will create a new ***model***, ***migration***, ***validator***, ***repo***, ***factory*** and ***controller*** for **Model**. Each of these can also be generated seperately through artisan:
+In the example above, replace **X** with the name of your model. `hive:assemble` will create a new ***model***, ***migration***, ***validator***, ***repo***, ***factory*** and ***controller*** for **Model**. 
+
+Implementations can also be generated seperately through artisan with the following Hive commands:
 
 - hive:command
 - hive:controller
@@ -49,8 +51,9 @@ In the example above, replace **X** with the name of your model. `hive:assemble`
 - hive:instance
 - hive:repo
 - hive:validator
+- hive:mutator
 
-The Hive specific classes will be placed in the `app\Lib` directory, while the rest will be in the standard Laravel locations.
+The Hive specific classes will be placed in the `app\Lib` directory, while the rest will be located in standard Laravel locations.
 
 # Example
 
