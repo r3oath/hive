@@ -16,6 +16,11 @@ class DummyClassMutator implements MutatorInterface
         //
     }
 
+    public function all()
+    {
+        //
+    }
+
     public function has($key)
     {
         //

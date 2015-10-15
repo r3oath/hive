@@ -18,6 +18,11 @@ class DummyClassMutator implements MutatorInterface
         return $this->store[$key];
     }
 
+    public function all()
+    {
+        return $this->store;
+    }
+
     public function has($key)
     {
         return

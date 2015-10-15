@@ -14,6 +14,13 @@ interface MutatorInterface
     public function get($key);
 
     /**
+     * Return all of the mutators stored values.
+     *
+     * @return mixed
+     */
+    public function all();
+
+    /**
      * Check if this mutator has the given key->value pair.
      *
      * @param string $key The key to check for.

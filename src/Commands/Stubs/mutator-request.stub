@@ -19,6 +19,11 @@ class DummyClassMutator implements MutatorInterface
         return $this->request->get($key);
     }
 
+    public function all()
+    {
+        return $request->all();
+    }
+
     public function has($key)
     {
         return $this->request->has($key);
