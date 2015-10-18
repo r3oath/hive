@@ -30,6 +30,8 @@ class HiveGeneratorCommand extends GeneratorCommand
                     $this->call("hive:{$this->compound}", ['name' => $name]);
                 }
             }
+        } else {
+            parent::fire();
         }
     }
 }
