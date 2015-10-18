@@ -8,12 +8,12 @@ class DummyClass implements InstanceInterface
 {
     /**
      * The unique identifier for this instance.
+     *
      * @return mixed
      */
     public function identity()
     {
-        // WARNING!
-        // This should be unique for each instance of this class.
+        // This should return a unique id for each DummyClass instance.
         return 0;
     }
 }

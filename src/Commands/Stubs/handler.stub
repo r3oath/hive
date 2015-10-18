@@ -7,6 +7,13 @@ use R\Hive\Contracts\Commands\Handlers\HandlerInterface;
 
 class DummyClassHandler implements HandlerInterface
 {
+    /**
+     * Execute the given command and return the result.
+     *
+     * @param CommandInterface $command The command to execute.
+     *
+     * @return mixed
+     */
     public function execute(CommandInterface $command)
     {
         //
