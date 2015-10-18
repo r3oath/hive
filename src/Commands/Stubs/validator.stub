@@ -8,6 +8,7 @@ class DummyClassValidator extends Validator
 {
     /**
      * Get the rules used during the creation of a new DummyClass instance.
+     *
      * @return array Validation rules.
      */
     public function getCreateRules()
@@ -17,6 +18,7 @@ class DummyClassValidator extends Validator
 
     /**
      * Get the rules used during an update of a DummyClass instance.
+     *
      * @return array Validation rules.
      */
     public function getUpdateRules()
@@ -26,8 +28,10 @@ class DummyClassValidator extends Validator
 
     /**
      * Generate the create or update rules dynamically.
-     * @param  boolean $is_update True if update rules should be generated.
-     * @return array              Validation rules.
+     *
+     * @param boolean $is_update True if update rules should be generated.
+     *
+     * @return array Validation rules.
      */
     protected function generateRules($is_update = false)
     {
