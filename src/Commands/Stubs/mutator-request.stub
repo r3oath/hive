@@ -43,7 +43,7 @@ class DummyClassMutator implements MutatorInterface
      */
     public function all()
     {
-        return $request->all();
+        return $this->request->all();
     }
 
     /**
