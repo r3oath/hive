@@ -5,13 +5,13 @@ namespace R\Hive\Contracts\Data;
 interface ValidatorInterface
 {
     /**
-     * Validate the given attributes for the instance type associated.
+     * Validate the supplied data.
      *
-     * @param array $attributes The attributes to validate.
+     * @param MutatorInterface $mutator The data mutator.
      *
      * @return void
      */
-    public function validate($attributes = []);
+    public function validate(MutatorInterface $mutator);
 
     /**
      * Whether this validator has any errors available.

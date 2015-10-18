@@ -9,31 +9,63 @@ use R\Hive\Contracts\Handlers\OnDestroyInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Repos\RepoInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
 class DummyClassRepo implements RepoInterface
 {
+    /**
+     * The associated DummyClass factory.
+     *
+     * @var DummyClassFactory
+     */
     protected $factory;
 
+    /**
+     * Create a new repo with an associated DummyClassFactory.
+     *
+     * @param DummyClassFactory $factory Instance factory.
+     */
     public function __construct(DummyClassFactory $factory)
     {
         $this->factory = $factory;
     }
 
+    /**
+     * Return a collection of all DummyClass instances.
+     *
+     * @return array
+     */
     public function all()
     {
         return DummyClass::all();
     }
 
+    /**
+     * Create a new DummyClass instance.
+     *
+     * @param OnCreateInterface $handler The requesting class.
+     * @param MutatorInterface  $mutator The data mutator.
+     *
+     * @return DummyClass The new instance.
+     */
     public function create(
         OnCreateInterface $handler,
-        $attributes = []
+        MutatorInterface $mutator
     ) {
         return $this->factory->make(
             $handler,
-            $attributes,
+            $mutator,
         );
     }
 
+    /**
+     * Destroy the given instance.
+     *
+     * @param OnDestroyInterface $handler  The requesting class.
+     * @param InstanceInterface  $instance The instance.
+     *
+     * @return mixed
+     */
     public function destroy(
         OnDestroyInterface $handler,
         InstanceInterface $instance
@@ -43,25 +75,46 @@ class DummyClassRepo implements RepoInterface
         return $handler->destroySucceeded($instance);
     }
 
+    /**
+     * Find and return the instance by the given ID.
+     *
+     * @param integer $id The instance ID to search by.
+     *
+     * @return DummyClass|null The instance or null if not found.
+     */
     public function find($id)
     {
         return DummyClass::find($id);
     }
 
+    /**
+     * Whether this repo supports and observatory.
+     *
+     * @return bool True if observatory supported.
+     */
     public function supportsObservatory()
     {
         return false;
     }
 
+    /**
+     * Update the given DummyClass instance.
+     *
+     * @param OnUpdateInterface $handler  The requesting class.
+     * @param InstanceInterface $instance The DummyClass instance.
+     * @param MutatorInterface  $mutator  The data mutator.
+     *
+     * @return DummyClass The updated instance.
+     */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = []
+        MutatorInterface $mutator
     ) {
         return $this->factory->update(
             $handler,
             $instance,
-            $attributes,
+            $mutator,
         );
     }
 }

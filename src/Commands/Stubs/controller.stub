@@ -4,6 +4,7 @@ namespace DummyNamespace;
 
 use DummyRootNamespaceHttp\Controllers\Controller;
 use DummyRootNamespaceLib\Repos\DummyClassRepo;
+use DummyRootNamespaceLib\Data\DummyClassRequestMutator;
 use Illuminate\Http\Request;
 use R\Hive\Contracts\Data\MessageInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
@@ -13,6 +14,11 @@ use R\Hive\Contracts\Instances\InstanceInterface;
 
 class DummyClassController extends Controller implements OnCreateInterface, OnUpdateInterface, OnDestroyInterface
 {
+    /**
+     * The associated DummyClass repo.
+     *
+     * @var DummyClassRepo
+     */
     protected $repo;
 
     /**
@@ -143,7 +149,10 @@ class DummyClassController extends Controller implements OnCreateInterface, OnUp
      */
     public function store(Request $request)
     {
-        return $this->repo->create($this, $request->all());
+        return $this->repo->create(
+            $this,
+            new DummyClassRequestMutator($request)
+        );
     }
 
     /**
@@ -170,7 +179,11 @@ class DummyClassController extends Controller implements OnCreateInterface, OnUp
     {
         $instance = $this->repo->find($id);
         if ($instance !== null) {
-            return $this->repo->update($this, $instance, $request->all());
+            return $this->repo->update(
+                $this,
+                $instance,
+                new DummyClassRequestMutator($request)
+            );
         }
 
         abort(404);

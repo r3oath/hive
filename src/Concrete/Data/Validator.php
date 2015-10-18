@@ -5,6 +5,7 @@ namespace R\Hive\Concrete\Data;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException;
 use R\Hive\Contracts\Data\ValidatorInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
 class Validator implements ValidatorInterface
 {
@@ -44,11 +45,11 @@ class Validator implements ValidatorInterface
         return $this;
     }
 
-    public function validate($attributes = [])
+    public function validate(MutatorInterface $mutator)
     {
         $validator = $this->update
-        ? $this->factory->make($attributes, $this->getUpdateRules())
-        : $this->factory->make($attributes, $this->getCreateRules());
+        ? $this->factory->make($mutator->all(), $this->getUpdateRules())
+        : $this->factory->make($mutator->all(), $this->getCreateRules());
 
         if ($validator->fails()) {
             $this->errors = $validator->errors();

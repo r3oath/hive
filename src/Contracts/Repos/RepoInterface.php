@@ -6,6 +6,7 @@ use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnDestroyInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
 /**
  * Represents a  instance repository.
@@ -31,29 +32,29 @@ interface RepoInterface
     /**
      * Create a new instance.
      *
-     * @param OnCreateInterface $handler    The requesting class that will handle the result.
-     * @param array             $attributes The attributes for the new instance.
+     * @param OnCreateInterface $handler The requesting class.
+     * @param MutatorInterface  $mutator The data mutator for this instance type.
      *
      * @return void
      */
     public function create(
         OnCreateInterface $handler,
-        $attributes = []
+        MutatorInterface $mutator
     );
 
     /**
      * Update the given instance.
      *
-     * @param OnUpdateInterface $handler    The requesting class that will handle the result.
-     * @param InstanceInterface $instance   The instance being updated.
-     * @param array             $attributes The attributes to be updated.
+     * @param OnUpdateInterface $handler  The requesting class.
+     * @param InstanceInterface $instance The instance to be updated.
+     * @param MutatorInterface  $mutator  The data mutator for this instance type.
      *
      * @return void
      */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = []
+        MutatorInterface $mutator
     );
 
     /**
