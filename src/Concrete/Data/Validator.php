@@ -4,8 +4,8 @@ namespace R\Hive\Concrete\Data;
 
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use R\Hive\Concrete\Exceptions\ValidatorRulesNotSuppliedException;
-use R\Hive\Contracts\Data\ValidatorInterface;
 use R\Hive\Contracts\Data\MutatorInterface;
+use R\Hive\Contracts\Data\ValidatorInterface;
 
 class Validator implements ValidatorInterface
 {

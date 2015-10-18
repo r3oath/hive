@@ -2,11 +2,11 @@
 
 namespace R\Hive\Contracts\Repos;
 
+use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnDestroyInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
-use R\Hive\Contracts\Data\MutatorInterface;
 
 /**
  * Represents a  instance repository.

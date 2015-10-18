@@ -33,7 +33,9 @@ class DummyClassFactory extends Factory
         $instance->fill($attributes);
         $instance->save();
 
-        return $this->reportSuccess($instance, false, $observatory);
+        $this->reportSuccess($instance, false, $observatory);
+
+        return $handler->createSucceeded($instance);
     }
 
     /**
@@ -56,6 +58,8 @@ class DummyClassFactory extends Factory
         $instance->fill($attributes);
         $instance->save();
 
-        return $this->reportSuccess($instance, true, $observatory);
+        $this->reportSuccess($instance, true, $observatory);
+
+        return $handler->updateSucceeded($instance);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace R\Hive\Contracts\Factories;
 
+use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
-use R\Hive\Contracts\Data\MutatorInterface;
 
 interface FactoryInterface
 {

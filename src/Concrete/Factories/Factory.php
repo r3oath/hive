@@ -3,13 +3,11 @@
 namespace R\Hive\Concrete\Factories;
 
 use R\Hive\Concrete\Data\Message;
-use R\Hive\Contracts\Factories\FactoryInterface;
-use R\Hive\Contracts\Handlers\OnCreateInterface;
-use R\Hive\Contracts\Handlers\OnUpdateInterface;
-use R\Hive\Contracts\Instances\InstanceInterface;
-use R\Hive\Contracts\Observers\ObservatoryInterface;
 use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Data\ValidatorInterface;
+use R\Hive\Contracts\Factories\FactoryInterface;
+use R\Hive\Contracts\Instances\InstanceInterface;
+use R\Hive\Contracts\Observers\ObservatoryInterface;
 
 class Factory implements FactoryInterface
 {
@@ -35,11 +33,6 @@ class Factory implements FactoryInterface
                 $observatory->notifyOnCreateSucceeded($instance);
             }
         }
-
-        // Return the instance to the requesting class.
-        return $is_update
-            ? $handler->updateSucceeded($instance)
-            : $handler->createSucceeded($instance);
     }
 
     /**
@@ -84,6 +77,6 @@ class Factory implements FactoryInterface
         }
 
         // If everything went well, return null.
-        return null;
+        return;
     }
 }
