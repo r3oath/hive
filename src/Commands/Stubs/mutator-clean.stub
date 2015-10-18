@@ -6,26 +6,55 @@ use R\Hive\Contracts\Data\MutatorInterface;
 
 class DummyClassMutator implements MutatorInterface
 {
+    /**
+     * Create a new DummyClassMutator.
+     */
     public function __construct()
     {
         //
     }
 
+    /**
+     * Get the value for the specified key.
+     *
+     * @param string $key The key.
+     *
+     * @return mixed The value.
+     */
     public function get($key)
     {
         //
     }
 
+    /**
+     * Get all the key/value pairs.
+     *
+     * @return array Key/value pairs.
+     */
     public function all()
     {
         //
     }
 
+    /**
+     * Check if this mutator has the specified key/value pair.
+     *
+     * @param string $key The key to look for.
+     *
+     * @return boolean True if the key/value pair.
+     */
     public function has($key)
     {
         //
     }
 
+    /**
+     * Set the specified key/value pair.
+     *
+     * @param string $key The key.
+     *
+     * @param mixed $value The value.
+     */
     public function set($key, $value)
     {
         //

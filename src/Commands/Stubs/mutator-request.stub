@@ -7,28 +7,75 @@ use Illuminate\Http\Request;
 
 class DummyClassMutator implements MutatorInterface
 {
+    /**
+     * The associated data providing Request.
+     *
+     * @var Request
+     */
     protected $request;
 
+    /**
+     * Create a new mutator from the given Request.
+     *
+     * @param Request $request The request.
+     */
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
 
+    /**
+     * Get the value for the specified key.
+     *
+     * @param string $key The key.
+     *
+     * @return mixed The value.
+     */
     public function get($key)
     {
         return $this->request->get($key);
     }
 
+    /**
+     * Get all the associated key/value pairs from the request.
+     *
+     * @return array The key/value store.
+     */
     public function all()
     {
         return $request->all();
     }
 
+    /**
+     * Get the key/value pairs for the set of specified keys.
+     *
+     * @param array $keys The keys.
+     *
+     * @return array The associated key/value pairs matching the given keys.
+     */
+    public function values($keys = [])
+    {
+        return $this->request->only($keys);
+    }
+
+    /**
+     * Check if the specified key/value pair exists for the given key.
+     *
+     * @param string $key The key to look for.
+     *
+     * @return boolean True of if the key/value pair exists.
+     */
     public function has($key)
     {
         return $this->request->has($key);
     }
 
+    /**
+     * Set the specified key/value pair.
+     *
+     * @param string $key   The key.
+     * @param mixed  $value The value.
+     */
     public function set($key, $value)
     {
         // Not required.
