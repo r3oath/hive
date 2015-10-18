@@ -81,7 +81,7 @@ class DummyClassFactory extends Factory
         ObservatoryInterface $observatory = null
     ) {
         // Whether this event is an update.
-        $is_update = false;
+        $is_update = true;
 
         // Validate the supplied data.
         if (($message = $this->validate($this->validator, $mutator, $is_update, $observatory)) !== null) {
