@@ -6,36 +6,39 @@ use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
 interface FactoryInterface
 {
     /**
-     * Create a new instance given the attributes.
+     * Create a new instance.
      *
-     * @param OnCreateInterface $handler    The requesting class that will handle the result.
-     * @param array             $attributes The attributes of the new instance.
+     * @param OnCreateInterface         $handler     The requesting class.
+     * @param MutatorInterface          $mutator     The data mutator for this instance type.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
      *
-     * @return object The new instance.
+     * @return void
      */
     public function make(
         OnCreateInterface $handler,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     );
 
     /**
-     * Update the given instance with the supplied attributes.
+     * Update the given instance.
      *
-     * @param OnUpdateInterface $handler    The requesting class that will handle the result.
-     * @param InstanceInterface $instance   The instance being updated.
-     * @param array             $attributes The new attributes for the instance.
+     * @param OnUpdateInterface         $handler     The requesting class.
+     * @param InstanceInterface         $instance    The instance to be updated.
+     * @param MutatorInterface          $mutator     The data mutator for this instance type.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
      *
-     * @return object The updated instance.
+     * @return void
      */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     );
 }

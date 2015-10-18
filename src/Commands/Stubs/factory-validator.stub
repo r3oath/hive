@@ -5,22 +5,26 @@ namespace DummyNamespace;
 use DummyRootNamespaceDummyClass;
 use DummyRootNamespaceLib\Data\DummyClassValidator;
 use R\Hive\Concrete\Data\Message;
+use R\Hive\Concrete\Factories\Factory;
 use R\Hive\Contracts\Factories\FactoryInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
-class DummyClassFactory implements FactoryInterface
+class DummyClassFactory extends Factory
 {
     /**
      * A DummyClassValidator instance.
+     *
      * @var DummyClassValidator
      */
     protected $validator;
 
     /**
      * Create a new DummyClassFactory with the given validator.
+     *
      * @param DummyClassValidator $validator The associated validator.
      */
     public function __construct(DummyClassValidator $validator)
@@ -30,78 +34,62 @@ class DummyClassFactory implements FactoryInterface
 
     /**
      * Create a new DummyClass instance.
-     * @param  OnCreateInterface         $handler     The requesting class.
-     * @param  array                     $attributes  The attributes for the new instance.
-     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     *
+     * @param OnCreateInterface         $handler     The requesting class.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
      * @return mixed
      */
     public function make(
         OnCreateInterface $handler,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
-    )
-    {
-        $this->validator->validate($attributes);
+    ) {
+        // Whether this event is an update.
+        $is_update = false;
 
-        if ($this->validator->hasErrors()) {
-            $message = new Message('Failed to validate the supplied attributes', $this->validator);
-
-            if ($observatory !== null) {
-                $observatory->notifyOnCreateFailed($message);
-            }
-
+        // Validate the supplied data.
+        if (($message = $this->validate($this->validator, $mutator, $is_update, $observatory)) !== null) {
             return $handler->createFailed($message);
         }
 
-        // ...
+        // Create the new instance here.
         $instance = new DummyClass;
-        $instance->fill($attributes);
+        $instance->fill($mutator->all());
         $instance->save();
-        // ...
 
-        if ($observatory !== null) {
-            $observatory->notifyOnCreateSucceeded($instance);
-        }
-
-        return $handler->createSucceeded($instance);
+        return $this->reportSuccess($instance, $is_update, $observatory);
     }
 
     /**
      * Update the given DummyClass instance.
-     * @param  OnUpdateInterface         $handler     The requesting class.
-     * @param  InstanceInterface         $instance    The instance being updated.
-     * @param  array                     $attributes  The new attributes for the instance.
-     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     *
+     * @param OnUpdateInterface         $handler     The requesting class.
+     * @param InstanceInterface         $instance    The DummyClass instance to be updated.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
      * @return mixed
      */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
-    )
-    {
-        $this->validator->markAsUpdate()->validate($attributes);
+    ) {
+        // Whether this event is an update.
+        $is_update = false;
 
-        if ($this->validator->hasErrors()) {
-            $message = new Message('Failed to validate supplied attributes', $this->validator);
-
-            if ($observatory !== null) {
-                $observatory->notifyOnUpdateFailed($message);
-            }
-
+        // Validate the supplied data.
+        if (($message = $this->validate($this->validator, $mutator, $is_update, $observatory)) !== null) {
             return $handler->updateFailed($message);
         }
 
-        // ...
-        $instance->fill($attributes);
+        // Update the instance here.
+        $instance->fill($mutator->all());
         $instance->save();
-        // ...
 
-        if ($observatory !== null) {
-            $observatory->notifyOnUpdateSucceeded($instance);
-        }
-
-        return $handler->updateSucceeded($instance);
+        return $this->reportSuccess($instance, $is_update, $observatory);
     }
 }

@@ -4,62 +4,58 @@ namespace DummyNamespace;
 
 use DummyRootNamespaceDummyClass;
 use R\Hive\Concrete\Data\Message;
+use R\Hive\Concrete\Factories\Factory;
 use R\Hive\Contracts\Factories\FactoryInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
-class DummyClassFactory implements FactoryInterface
+class DummyClassFactory extends Factory
 {
     /**
      * Create a new DummyClass instance.
-     * @param  OnCreateInterface         $handler     The requesting class.
-     * @param  array                     $attributes  The attributes for the new instance.
-     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     *
+     * @param OnCreateInterface         $handler     The requesting class.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
      * @return mixed
      */
     public function make(
         OnCreateInterface $handler,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     ) {
-        // ...
+        // Create the new instance here.
         $instance = new DummyClass;
         $instance->fill($attributes);
         $instance->save();
-        // ...
 
-        if ($observatory !== null) {
-            $observatory->notifyOnCreateSucceeded($instance);
-        }
-
-        return $handler->createSucceeded($instance);
+        return $this->reportSuccess($instance, false, $observatory);
     }
 
     /**
      * Update the given DummyClass instance.
-     * @param  OnUpdateInterface         $handler     The requesting class.
-     * @param  InstanceInterface         $instance    The instance being updated.
-     * @param  array                     $attributes  The new attributes for the instance.
-     * @param  ObservatoryInterface|null $observatory Optional observatory.
+     *
+     * @param OnUpdateInterface         $handler     The requesting class.
+     * @param InstanceInterface         $instance    The DummyClass instance to be updated.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
      * @return mixed
      */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     ) {
-        // ...
+        // Update the instance here.
         $instance->fill($attributes);
         $instance->save();
-        // ...
 
-        if ($observatory !== null) {
-            $observatory->notifyOnUpdateSucceeded($instance);
-        }
-
-        return $handler->updateSucceeded($instance);
+        return $this->reportSuccess($instance, true, $observatory);
     }
 }
