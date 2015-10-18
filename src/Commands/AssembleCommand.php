@@ -9,7 +9,7 @@ class AssembleCommand extends Command
 {
     protected $name = 'hive:assemble';
 
-    protected $description = 'Create a new Hive resource collection for an instance.';
+    protected $description = 'Create a new Hive RESTful HTTP resource collection.';
 
     public function fire()
     {
