@@ -6,6 +6,8 @@ use R\Hive\Concrete\Data\Message;
 use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Data\ValidatorInterface;
 use R\Hive\Contracts\Factories\FactoryInterface;
+use R\Hive\Contracts\Handlers\OnCreateInterface;
+use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
 
@@ -78,5 +80,22 @@ class Factory implements FactoryInterface
 
         // If everything went well, return null.
         return;
+    }
+
+    public function make(
+        OnCreateInterface $handler,
+        MutatorInterface $mutator,
+        ObservatoryInterface $observatory = null
+    ) {
+        // To be overridden.
+    }
+
+    public function update(
+        OnUpdateInterface $handler,
+        InstanceInterface $instance,
+        MutatorInterface $mutator,
+        ObservatoryInterface $observatory = null
+    ) {
+        // To be overridden.
     }
 }
