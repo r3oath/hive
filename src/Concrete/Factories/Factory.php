@@ -11,7 +11,7 @@ use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
 
-class Factory implements FactoryInterface
+abstract class Factory implements FactoryInterface
 {
     /**
      * Report success to the observatory and call the handler event.
@@ -82,20 +82,16 @@ class Factory implements FactoryInterface
         return;
     }
 
-    public function make(
+    abstract public function make(
         OnCreateInterface $handler,
         MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
-    ) {
-        // To be overridden.
-    }
+    );
 
-    public function update(
+    abstract public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
         MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
-    ) {
-        // To be overridden.
-    }
+    );
 }
