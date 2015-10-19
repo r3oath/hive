@@ -33,7 +33,11 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('getCreateRules')->atLeast()->once()->andReturn([]);
         });
 
-        $dummy_validator->validate(['foo' => 'bar']);
+        $dummy_mutator = m::mock('R\Hive\Contracts\Data\MutatorInterface', function ($mock) {
+            $mock->shouldReceive('all')->atLeast()->once()->andReturn(['foo' => 'bar']);
+        });
+
+        $dummy_validator->validate($dummy_mutator);
 
         $this->assertEquals(true, $dummy_validator->hasErrors());
         $this->assertEquals($errors, $dummy_validator->getErrors());
@@ -57,7 +61,11 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('getUpdateRules')->atLeast()->once()->andReturn([]);
         });
 
-        $dummy_validator->markAsUpdate()->validate(['foo' => 'bar']);
+        $dummy_mutator = m::mock('R\Hive\Contracts\Data\MutatorInterface', function ($mock) {
+            $mock->shouldReceive('all')->atLeast()->once()->andReturn(['foo' => 'bar']);
+        });
+
+        $dummy_validator->markAsUpdate()->validate($dummy_mutator);
 
         $this->assertEquals(false, $dummy_validator->hasErrors());
     }
@@ -80,7 +88,11 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
             $mock->shouldReceive('getCreateRules')->atLeast()->once()->andReturn([]);
         });
 
-        $dummy_validator->validate(['foo' => 'bar']);
+        $dummy_mutator = m::mock('R\Hive\Contracts\Data\MutatorInterface', function ($mock) {
+            $mock->shouldReceive('all')->atLeast()->once()->andReturn(['foo' => 'bar']);
+        });
+
+        $dummy_validator->validate($dummy_mutator);
 
         $this->assertEquals(false, $dummy_validator->hasErrors());
     }
@@ -93,9 +105,12 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
         $factory = m::mock('Illuminate\Contracts\Validation\Factory');
+        $dummy_mutator = m::mock('R\Hive\Contracts\Data\MutatorInterface', function ($mock) {
+            $mock->shouldReceive('all')->atLeast()->once();
+        });
 
         $dummy_validator = new Validator($factory);
-        $dummy_validator->validate(['foo' => 'bar']);
+        $dummy_validator->validate($dummy_mutator);
     }
 
     /**
@@ -106,8 +121,11 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     {
         $validator = m::mock('Illuminate\Contracts\Validation\Validator');
         $factory = m::mock('Illuminate\Contracts\Validation\Factory');
+        $dummy_mutator = m::mock('R\Hive\Contracts\Data\MutatorInterface', function ($mock) {
+            $mock->shouldReceive('all')->atLeast()->once();
+        });
 
         $dummy_validator = new Validator($factory);
-        $dummy_validator->markAsUpdate()->validate(['foo' => 'bar']);
+        $dummy_validator->markAsUpdate()->validate($dummy_mutator);
     }
 }
