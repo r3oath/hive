@@ -37,6 +37,18 @@ class DummyClassMutator implements MutatorInterface
     }
 
     /**
+     * Return the values for the specified set of keys.
+     *
+     * @param array $keys The key to find values for.
+     *
+     * @return array The key/value pairs that match the given keys.
+     */
+    public function values($keys = [])
+    {
+        //
+    }
+
+    /**
      * Check if this mutator has the specified key/value pair.
      *
      * @param string $key The key to look for.
