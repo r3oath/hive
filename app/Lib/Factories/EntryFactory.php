@@ -5,81 +5,94 @@ namespace App\Lib\Factories;
 use App\Entry;
 use App\Lib\Data\EntryValidator;
 use R\Hive\Concrete\Data\Message;
+use R\Hive\Concrete\Factories\Factory;
 use R\Hive\Contracts\Factories\FactoryInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
+use R\Hive\Contracts\Data\MutatorInterface;
 
-class EntryFactory implements FactoryInterface
+class EntryFactory extends Factory
 {
+    /**
+     * A EntryValidator instance.
+     *
+     * @var EntryValidator
+     */
     protected $validator;
 
+    /**
+     * Create a new EntryFactory with the given validator.
+     *
+     * @param EntryValidator $validator The associated validator.
+     */
     public function __construct(EntryValidator $validator)
     {
         $this->validator = $validator;
     }
 
-    // Here you create your instances in what ever fashion suit your needs.
-    // I've used Laravels built in Model methods to do so.
+    /**
+     * Create a new Entry instance.
+     *
+     * @param OnCreateInterface         $handler     The requesting class.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
+     * @return mixed
+     */
     public function make(
         OnCreateInterface $handler,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     ) {
-        // If the supplied attributes are invalid, we can let the requesting
-        // class know something went wrong with making this instance and pass
-        // along a message and a reference to the validator.
-        $this->validator->validate($attributes);
+        // Whether this event is an update.
+        $is_update = false;
 
-        if ($this->validator->hasErrors()) {
-            $message = new Message('Failed to validate supplied attributes', $this->validator);
-
-            if ($observatory !== null) {
-                $observatory->notifyOnCreateFailed($message);
-            }
-
+        // Validate the supplied data.
+        if (($message = $this->validate($this->validator, $mutator, $is_update, $observatory)) !== null) {
             return $handler->createFailed($message);
         }
 
+        // Create the new instance here.
         $instance = new Entry;
-        $instance->fill($attributes);
+        $instance->fill($mutator->all());
         $instance->save();
 
-        if ($observatory !== null) {
-            $observatory->notifyOnCreateSucceeded($instance);
-        }
+        $this->reportSuccess($instance, false, $observatory);
 
-        // The instance was successfully created, let the requesting class know!
         return $handler->createSucceeded($instance);
     }
 
-    // Almost exactly the same as the make method, except here we just update
-    // the attributes on the instance.
+    /**
+     * Update the given Entry instance.
+     *
+     * @param OnUpdateInterface         $handler     The requesting class.
+     * @param InstanceInterface         $instance    The Entry instance to be updated.
+     * @param MutatorInterface          $mutator     The data mutator.
+     * @param ObservatoryInterface|null $observatory An optional observatory.
+     *
+     * @return mixed
+     */
     public function update(
         OnUpdateInterface $handler,
         InstanceInterface $instance,
-        $attributes = [],
+        MutatorInterface $mutator,
         ObservatoryInterface $observatory = null
     ) {
-        $this->validator->markAsUpdate()->validate($attributes);
+        // Whether this event is an update.
+        $is_update = true;
 
-        if ($this->validator->hasErrors()) {
-            $message = new Message('Failed to validate supplied attributes', $this->validator);
-
-            if ($observatory !== null) {
-                $observatory->notifyOnUpdateFailed($message);
-            }
-
+        // Validate the supplied data.
+        if (($message = $this->validate($this->validator, $mutator, $is_update, $observatory)) !== null) {
             return $handler->updateFailed($message);
         }
 
-        $instance->fill($attributes);
+        // Update the instance here.
+        $instance->fill($mutator->all());
         $instance->save();
 
-        if ($observatory !== null) {
-            $observatory->notifyOnUpdateSucceeded($instance);
-        }
+        $this->reportSuccess($instance, true, $observatory);
 
         return $handler->updateSucceeded($instance);
     }

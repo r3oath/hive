@@ -1,20 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateEntriesTable extends Migration
 {
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('entries');
-    }
-
     /**
      * Run the migrations.
      *
@@ -28,5 +18,15 @@ class CreateEntriesTable extends Migration
             $table->text('content');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('entries');
     }
 }

@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('entries/random', 'EntriesController@random');
 Route::resource(
     'entries',
-    'EntriesController',
+    'EntryController',
     ['except' => ['create', 'edit']]
 );
+
+// Try uploading the example file in public/entry.csv :)
+Route::post('entries/upload', 'EntryController@upload');
