@@ -54,7 +54,7 @@ class DummyClassMutator implements MutatorInterface
      */
     public function values($keys = [])
     {
-        return array_intersect_key($this->store, $keys);
+        return array_intersect_key($this->store, array_flip($keys));
     }
 
     /**
