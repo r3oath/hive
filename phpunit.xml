@@ -35,6 +35,9 @@
       <testsuite name="Data Test Suite">
          <directory>tests/Data</directory>
       </testsuite>
+      <testsuite name="Factories Test Suite">
+         <directory>tests/Factories</directory>
+      </testsuite>
       <testsuite name="Observers Test Suite">
          <directory>tests/Observers</directory>
       </testsuite>
