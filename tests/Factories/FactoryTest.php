@@ -2,10 +2,10 @@
 
 use Mockery as m;
 use R\Hive\Concrete\Factories\Factory;
+use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Handlers\OnCreateInterface;
 use R\Hive\Contracts\Handlers\OnUpdateInterface;
 use R\Hive\Contracts\Instances\InstanceInterface;
-use R\Hive\Contracts\Data\MutatorInterface;
 use R\Hive\Contracts\Observers\ObservatoryInterface;
 
 class FactoryTest extends PHPUnit_Framework_TestCase

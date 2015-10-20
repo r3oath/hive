@@ -1,7 +1,7 @@
 <?php
 
-use Sami\Sami;
 use Sami\RemoteRepository\GitHubRemoteRepository;
+use Sami\Sami;
 use Symfony\Component\Finder\Finder;
 
 // Download sami via
@@ -16,7 +16,7 @@ $iterator = Finder::create()
     ->exclude('Providers')
     ->in('./src');
 
-return new Sami($iterator, array(
+return new Sami($iterator, [
     'title'             => 'Hive API',
     'remote_repository' => new GitHubRemoteRepository('r3oath/hive', './'),
-));
+]);
