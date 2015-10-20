@@ -1,3 +1,49 @@
+# Mutator
+
+A data mutator is an object that ingests a data source and provides a standard, well known interface for working with that data. Data mutators are a integral part of Hive and allow your system to accept data from almost any source, whether it be an HTTP request, JSON payload, a file upload, stream, or from another server. The mutator interface exposes the methods `get`, `all`, `values`, `has` and `set`.
+
+### get(...)
+
+Expects a string `$key` and retrieves the value associated with the given key.
+
+```php
+return $this->store[$key];
+```
+
+### all()
+
+Returns all the key/value pairs available.
+
+```php
+return $this->store;
+```
+
+### values(...)
+
+Expects an array `$keys = []`. Will return all the key/value pairs associated with the list of keys provided.
+
+```php
+return array_intersect_key($this->store, array_flip($keys));
+```
+
+### has(...)
+
+Expects a string `$key` and returns true when the given key exists.
+
+```php
+return
+    isset($this->store[$key])
+    || array_key_exists($key, $this->store);
+```
+
+### set(...)
+
+Expects a key `$key` and `$value` to set on the mutator.
+
+```php
+$this->store[$key] = $value;
+```
+
 # Message
 
 A message carries a description of something that went wrong and optionally a reference to a validator. The interface exposes the methods `getMessage`, `attachValidator`, `hasValidator` and `getValidator`
@@ -62,12 +108,12 @@ public function __construct(ValidationFactory $factory)
 
 ### validate(...)
 
-Expects an array of attributes `$attributes = []` to validate. This method should check with the validation is for an update. If errors occur, they'll be set on the class. It should return itself for easy chaining.
+Expects a `MutatorInterface $mutator` instance to validate. This method should check whether the validation is for an update. If any errors occur, they should be stored on the class instance and it should return itself for easy chaining.
 
 ```php
 $validator = $this->update
-? $this->factory->make($attributes, $this->getUpdateRules())
-: $this->factory->make($attributes, $this->getCreateRules());
+? $this->factory->make($mutator->all(), $this->getUpdateRules())
+: $this->factory->make($mutator->all(), $this->getCreateRules());
 
 if ($validator->fails()) {
     $this->errors = $validator->errors();

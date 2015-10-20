@@ -16,10 +16,10 @@ public function __construct(BookValidator $validator)
 
 ### make(...)
 
-Expects `OnCreateInterface $handler`, `$attributes = []` and optionally `ObservatoryInterface $observatory`. This method takes the supplied attributes, creates a new instance and calls the respective `createSucceeded` or `createFailed` methods on the `$handler`, if an optional `$observatory` has been supplied, it will call the respective `notifyOnCreateSucceeded` and `notifyOnCreateFailed` methods depending on the outcome.
+Expects `OnCreateInterface $handler`, `MutatorInterface $mutator` and optionally `ObservatoryInterface $observatory`. This method takes the supplied mutator, creates a new instance and calls the respective `createSucceeded` or `createFailed` methods on the `$handler`, if an optional `$observatory` has been supplied, it will call the respective `notifyOnCreateSucceeded` and `notifyOnCreateFailed` methods depending on the outcome.
 
 ```php
-$this->validator->validate($attributes);
+$this->validator->validate($mutator->all());
 
 if ($this->validator->hasErrors()) {
     $message = new Message('Failed to validate the supplied attributes', $this->validator);
@@ -32,7 +32,7 @@ if ($this->validator->hasErrors()) {
 }
 
 $instance = new Book;
-$instance->fill($attributes);
+$instance->fill($mutator->all());
 $instance->save();
 
 if ($observatory !== null) {
@@ -44,10 +44,10 @@ return $handler->createSucceeded($instance);
 
 ### update(...)
 
-Expects `OnUpdateInterface $handler`, `InstanceInterface $instance`, `$attributes = []` and optionally `ObservatoryInterface $observatory`. This method takes the supplied attributes, updates the supplied instance and calls the respective `updateSucceeded` or `updateFailed` methods on the `$handler`, if an optional `$observatory` has been supplied, it will call the respective `notifyOnUpdateSucceeded` and `notifyOnUpdateFailed` methods depending on the outcome.
+Expects `OnUpdateInterface $handler`, `InstanceInterface $instance`, `MutatorInterface $mutator` and optionally `ObservatoryInterface $observatory`. This method takes the supplied mutator, updates the supplied instance and calls the respective `updateSucceeded` or `updateFailed` methods on the `$handler`, if an optional `$observatory` has been supplied, it will call the respective `notifyOnUpdateSucceeded` and `notifyOnUpdateFailed` methods depending on the outcome.
 
 ```php
-$this->validator->markAsUpdate()->validate($attributes);
+$this->validator->markAsUpdate()->validate($mutator->all());
 
 if ($this->validator->hasErrors()) {
     $message = new Message('Failed to validate the supplied attributes', $this->validator);
@@ -59,7 +59,7 @@ if ($this->validator->hasErrors()) {
     return $handler->updateFailed($message);
 }
 
-$instance->fill($attributes);
+$instance->fill($mutator->all());
 $instance->save();
 
 if ($observatory !== null) {

@@ -40,25 +40,25 @@ return Entry::find($id);
 
 ### create(...)
 
-Expects `OnCreateInterface $handler` and `$attributes = []`. This method will take the given attributes and attempt to create an instance for which the repo manages, notifying the `$handler` of the outcome.
+Expects `OnCreateInterface $handler` and a `MutatorInterface $mutator`. This method will take the given mutator and attempt to create an instance for which the repo manages, notifying the `$handler` of the outcome.
 
 ```php
 return $this->factory->make(
     $handler,
-    $attributes,
+    $mutator->all(),
     $this->observatory // Optional, see below.
 );
 ```
 
 ### update(...)
 
-Expects `OnUpdateInterface $handler`, `InstanceInterface $instance` and `$attributes = []`. This method will take the given attributes and attempt to modify the supplied instance for which the repo manages, notifying the `$handler` of the outcome.
+Expects `OnUpdateInterface $handler`, `InstanceInterface $instance` and a `MutatorInterface $mutator`. This method will take the given mutator and attempt to modify the supplied instance for which the repo manages, notifying the `$handler` of the outcome.
 
 ```php
 return $this->factory->update(
     $handler,
     $instance,
-    $attributes,
+    $mutator->all(),
     $this->observatory // Optional, see below.
 );
 ```
