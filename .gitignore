@@ -1,7 +1,0 @@
-/vendor
-/build
-composer.lock
-/site
-/cache
-/build
-*.phar
