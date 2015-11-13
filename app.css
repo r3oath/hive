@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,900|Cutive+Mono");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+.landing {
+  background-color: #31b8b7;
+  text-align: center;
+  color: #f2f0e3;
+}
+.landing__icon {
+  max-width: 9rem;
+}
+.landing__header {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 4rem;
+  letter-spacing: 0.8rem;
+}
+.landing__desc {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.landing__install {
+  font-family: 'Cutive Mono', 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  background-color: #3acbca;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+a.landing__github-btn,
+a.landing__docs-btn {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  text-decoration: none;
+  background: none;
+  color: #f2f0e3;
+  border: 0.1rem solid rgba(242,240,227,0.4);
+  border-radius: 10rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 0.2rem;
+}
+a.landing__github-btn:hover,
+a.landing__docs-btn:hover,
+a.landing__github-btn:focus,
+a.landing__docs-btn:focus {
+  border: 0.1rem solid #f2f0e3;
+}

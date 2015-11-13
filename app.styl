@@ -1,0 +1,71 @@
+// Vendor.
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,900|Cutive+Mono")
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css")
+
+// Theme colors.
+color-a = #F75E7C
+color-b = #293543
+color-c = #31B8B7
+color-d = #F2F0E3
+color-e = #D96140
+
+// Functions.
+clear-spacing()
+    padding 0
+    margin 0
+
+standard-font(size)
+    font-family 'Raleway', sans-serif
+    font-weight 300
+    font-size size
+
+heavy-font(size)
+    font-family 'Raleway', sans-serif
+    font-weight 900
+    font-size size
+
+mono-font(size)
+    font-family 'Cutive Mono', 'Raleway', sans-serif
+    font-weight 900
+    font-size size
+
+html, body
+    clear-spacing()
+
+.landing
+    background-color color-c
+    text-align center
+    color color-d
+
+.landing__icon
+    max-width 9rem
+
+.landing__header
+    heavy-font(4rem)
+    letter-spacing 0.8rem
+
+.landing__desc
+    standard-font(1rem)
+
+.landing__install
+    mono-font(1rem)
+    margin-top 2.5rem
+    margin-bottom 3rem
+    background-color lighten(color-c, 10%)
+    padding 0.5rem 1rem
+    display inline-block
+
+a.landing__github-btn, a.landing__docs-btn
+    standard-font(1rem)
+    text-decoration none
+    background none
+    color color-d
+    border 0.1rem solid rgba(color-d, 0.4)
+    border-radius 10rem
+    padding 0.5rem 1rem
+    cursor pointer
+    transition all .2s ease
+    margin 0 0.2rem
+
+    &:hover, &:focus
+        border 0.1rem solid rgba(color-d, 1)
