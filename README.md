@@ -36,7 +36,7 @@ php artisan serve
 
 You should now be able to access the example app at `localhost:8000`!
 
-To see how Hive has been implemented, check out the `app\Lib` directory as well as the `app\Http\Controllers\EntriesController.php` controller.
+To see how Hive has been implemented, check out the `app\Lib` directory as well as the `app\Http\Controllers\Web` & `...\Api` Entry controllers.
 
 # Documentation
 
