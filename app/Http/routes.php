@@ -15,11 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// API endpoint example.
+Route::group(['prefix' => 'api/v1'], function () {
+    Route::resource(
+        'entries',
+        'Api\EntryController',
+        ['except' => ['create', 'edit']]
+    );
+
+    // Try uploading the example file in public/entry.csv :)
+    Route::post('entries/upload', 'Api\EntryController@upload');
+});
+
+// Web endpoint example.
 Route::resource(
     'entries',
-    'EntryController',
-    ['except' => ['create', 'edit']]
+    'Web\EntryController'
 );
-
-// Try uploading the example file in public/entry.csv :)
-Route::post('entries/upload', 'EntryController@upload');
