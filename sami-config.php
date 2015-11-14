@@ -18,5 +18,4 @@ $iterator = Finder::create()
 
 return new Sami($iterator, [
     'title'             => 'Hive API',
-    'remote_repository' => new GitHubRemoteRepository('r3oath/hive', './'),
 ]);
