@@ -1,6 +1,5 @@
 <?php
 
-use Sami\RemoteRepository\GitHubRemoteRepository;
 use Sami\Sami;
 use Symfony\Component\Finder\Finder;
 
