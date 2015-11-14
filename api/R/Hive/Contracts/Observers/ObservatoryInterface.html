@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>R\Hive\Contracts\Observers\ObservatoryInterface | Hive API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:R_Hive_Contracts_Observers_ObservatoryInterface" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Hive API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                                                            <li><a href="../../../../R.html">R</a></li>
+                                        <li><a href="../../../../R/Hive.html">Hive</a></li>
+                                        <li><a href="../../../../R/Hive/Contracts.html">Contracts</a></li>
+                                        <li><a href="../../../../R/Hive/Contracts/Observers.html">Observers</a></li>
+    
+                <li>ObservatoryInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>ObservatoryInterface</h1>
+    </div>
+
+    <p>    interface
+    <strong>ObservatoryInterface</strong>
+</p>
+
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_registerObserver">registerObserver</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr> $observer)
+                                            <p>Register an observer wishing to receive notifications.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_unregisterObserver">unregisterObserver</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr> $observer)
+                                            <p>Unregister an observer that no longer wishes to receive notifications.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getObservers">getObservers</a>()
+                                            <p>Get the list of all registered observers in this observatory.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnCreateSucceeded">notifyOnCreateSucceeded</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)
+                                            <p>Notify all observers that a create succeeded.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnCreateFailed">notifyOnCreateFailed</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)
+                                            <p>Notify all observers that a create failed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnUpdateSucceeded">notifyOnUpdateSucceeded</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)
+                                            <p>Notify all observers that an update succeeded.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnUpdateFailed">notifyOnUpdateFailed</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)
+                                            <p>Notify all observers that an update failed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnDestroySucceeded">notifyOnDestroySucceeded</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)
+                                            <p>Notify all observers that a destroy succeeded.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notifyOnDestroyFailed">notifyOnDestroyFailed</a>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)
+                                            <p>Notify all observers that a destroy failed.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_registerObserver">
+        <div class="location">at line 17</div>
+        <code>                    
+    void
+    <strong>registerObserver</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr> $observer)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Register an observer wishing to receive notifications.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr></td>
+                <td>$observer</td>
+                <td>The observer.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unregisterObserver">
+        <div class="location">at line 26</div>
+        <code>                    
+    void
+    <strong>unregisterObserver</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr> $observer)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Unregister an observer that no longer wishes to receive notifications.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Observers\ObserverInterface">ObserverInterface</abbr></td>
+                <td>$observer</td>
+                <td>The observer.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getObservers">
+        <div class="location">at line 33</div>
+        <code>                    
+    array
+    <strong>getObservers</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the list of all registered observers in this observatory.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    array</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnCreateSucceeded">
+        <div class="location">at line 42</div>
+        <code>                    
+    void
+    <strong>notifyOnCreateSucceeded</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that a create succeeded.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr></td>
+                <td>$instance</td>
+                <td>The new instance.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnCreateFailed">
+        <div class="location">at line 51</div>
+        <code>                    
+    void
+    <strong>notifyOnCreateFailed</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that a create failed.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr></td>
+                <td>$message</td>
+                <td>The associated failure message.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnUpdateSucceeded">
+        <div class="location">at line 60</div>
+        <code>                    
+    void
+    <strong>notifyOnUpdateSucceeded</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that an update succeeded.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr></td>
+                <td>$instance</td>
+                <td>The updated instance.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnUpdateFailed">
+        <div class="location">at line 69</div>
+        <code>                    
+    void
+    <strong>notifyOnUpdateFailed</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that an update failed.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr></td>
+                <td>$message</td>
+                <td>The associated failure message.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnDestroySucceeded">
+        <div class="location">at line 78</div>
+        <code>                    
+    void
+    <strong>notifyOnDestroySucceeded</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr> $instance)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that a destroy succeeded.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Instances\InstanceInterface">InstanceInterface</abbr></td>
+                <td>$instance</td>
+                <td>The shallow reference to the delete instance.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notifyOnDestroyFailed">
+        <div class="location">at line 87</div>
+        <code>                    
+    void
+    <strong>notifyOnDestroyFailed</strong>(
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr> $message)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Notify all observers that a destroy failed.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="R\Hive\Contracts\Observers\R\Hive\Contracts\Data\MessageInterface">MessageInterface</abbr></td>
+                <td>$message</td>
+                <td>The associated failure message.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
