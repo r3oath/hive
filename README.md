@@ -22,7 +22,7 @@ composer require r3oath/hive
 
 # Example App
 
-Want to have a play around with an example implementation of Hive? Check out the [example-app branch](https://github.com/r3oath/hive/tree/example-app).
+Want to have a play around with an example Hive app? Check out the [example-app branch](https://github.com/r3oath/hive/tree/example-app).
 
 # Docs
 
@@ -58,7 +58,3 @@ Implementations can also be generated seperately through artisan with the follow
 - hive:mutator
 
 The Hive specific classes will be placed in the `app\Lib` directory, while the rest will be located in standard Laravel locations.
-
-# Example
-
-To play with an example implementation of Hive, check out the `example-app` branch of this repo.
