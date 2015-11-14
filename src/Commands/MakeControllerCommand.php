@@ -2,6 +2,8 @@
 
 namespace R\Hive\Commands;
 
+use Symfony\Component\Console\Input\InputOption;
+
 class MakeControllerCommand extends HiveGeneratorCommand
 {
     /**
@@ -54,6 +56,10 @@ class MakeControllerCommand extends HiveGeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
+        if ($this->option('subfolder')) {
+            return $rootNamespace.'\Http\Controllers\\'.$this->option('subfolder');
+        }
+
         return $rootNamespace.'\Http\Controllers';
     }
 
@@ -65,7 +71,7 @@ class MakeControllerCommand extends HiveGeneratorCommand
     protected function getOptions()
     {
         return [
-            //
+            ['subfolder', 's', InputOption::VALUE_OPTIONAL, 'The subfolder to place the controller into.'],
         ];
     }
 }

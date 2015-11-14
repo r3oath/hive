@@ -3,6 +3,7 @@
 namespace R\Hive\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Symfony\Component\Console\Input\InputArgument;
 
 class HiveGeneratorCommand extends GeneratorCommand
 {
@@ -33,5 +34,12 @@ class HiveGeneratorCommand extends GeneratorCommand
         } else {
             parent::fire();
         }
+    }
+
+    protected function getArguments()
+    {
+        return [
+            ['name', InputArgument::REQUIRED, 'The name of the instance type being referenced, eg: Book.'],
+        ];
     }
 }
