@@ -20,6 +20,10 @@ Installation is simple, simply issue the following composer command
 composer require r3oath/hive
 ```
 
+# Example App
+
+Want to have a play around with an example implementation of Hive? Check out the [example-app branch](https://github.com/r3oath/hive/tree/example-app).
+
 # Docs
 
 Check out the documentation at [ReadTheDocs](http://hive.readthedocs.org/)
