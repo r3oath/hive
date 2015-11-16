@@ -1,57 +1,59 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,900|Cutive+Mono);
 
-$color-a: #31b8b7;
-$color-b: #f2f0e3;
+@import "_variables";
+
+$color-a: $body-bg;
+$color-b: $text-color;
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 2rem;
-    background-color: $color-a;
-    color: $color-b;
     padding-top: 8rem;
 }
 
-h1 {
-    font-weight: 900;
-    font-size: 4rem;
-    letter-spacing: 0.8rem;
-}
-
-.icon {
-    max-width: 9rem;
-}
-
-.pre {
-    font-family: 'Cutive Mono', 'Raleway', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
-    background-color: #3acbca;
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    border: none;
-    color: $color-b;
-    font-size: 1.5rem;
-    max-width: 80rem;
-}
-
-.form-control {
-    display: block;
-    border: 0.1rem solid rgba(242, 240, 227, 0.4);
-    background: none;
-    box-shadow: none;
-    color: $color-b;
-
-    &:hover, &:focus {
-        border: 0.1rem solid rgba(242, 240, 227, 1);
-        background: none;
-        box-shadow: none;
-        color: $color-b;
-    }
-}
+//h1 {
+//    font-weight: 900;
+//    font-size: 4rem;
+//    letter-spacing: 0.8rem;
+//}
+//
+//.icon {
+//    max-width: 9rem;
+//}
+//
+//.pre {
+//    font-family: 'Cutive Mono', 'Raleway', sans-serif;
+//    font-weight: 900;
+//    font-size: 1rem;
+//    margin-top: 2.5rem;
+//    margin-bottom: 3rem;
+//    background-color: #3acbca;
+//    padding: 0.5rem 1rem;
+//    display: inline-block;
+//    border: none;
+//    color: $color-b;
+//    font-size: 1.5rem;
+//    max-width: 80rem;
+//}
+//
+//.form-control {
+//    display: block;
+//    border: 0.1rem solid rgba(242, 240, 227, 0.4);
+//    background: none;
+//    box-shadow: none;
+//    color: $color-b;
+//
+//    &:hover, &:focus {
+//        border: 0.1rem solid rgba(242, 240, 227, 1);
+//        background: none;
+//        box-shadow: none;
+//        color: $color-b;
+//    }
+//}
+//
 
 a.hive-btn, button.hive-btn {
     font-family: 'Raleway', sans-serif;
