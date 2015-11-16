@@ -16,14 +16,14 @@
 
                     <input type="hidden" name="_method" value="PATCH">
 
-                    <div class="form-group text-center">
+                    <div class="form-group text-center  @if($errors->has('name')) has-error @endif">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{ $instance->name }}">
+                        <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{ Input::old('name', $instance->name) }}">
                     </div>
 
-                    <div class="form-group text-center">
+                    <div class="form-group text-center  @if($errors->has('content')) has-error @endif">
                         <label for="content">Content</label>
-                        <input type="text" class="form-control" id="content" placeholder="" name="content" value="{{ $instance->content }}">
+                        <input type="text" class="form-control" id="content" placeholder="" name="content" value="{{ Input::old('content', $instance->content) }}">
                     </div>
 
                     <button class="hive-btn"><i class="fa fa-check-circle"></i> Update entry</button>
