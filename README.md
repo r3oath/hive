@@ -1,5 +1,5 @@
 # Deprecated
-Hive has now been deprecated in favour of the more robust and framework agnostic [Ezyme/Axiom](https://github.com/enzyme/axiom) package. Axiom is unfortunately not backwards compatible with Hive. But don't worry, it still plays great with Laravel! So if you're just starting out with a new project, [try it out!](https://github.com/enzyme/axiom) :tada:
+Hive has now been deprecated in favour of the more robust and framework agnostic [Enzyme/Axiom](https://github.com/enzyme/axiom) package. Axiom is unfortunately not backwards compatible with Hive. But don't worry, it still plays great with Laravel! So if you're just starting out with a new project, [try it out!](https://github.com/enzyme/axiom) :tada:
 
 # Current Build
 
