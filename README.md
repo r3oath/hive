@@ -39,7 +39,7 @@ To enable it, simply append the following line to the `'providers'` array inside
 R\Hive\Providers\HiveServiceProvider::class,
 ```
 
-The quickest way to setup a new collection of resources for a model is to fire off the the following command
+The quickest way to setup a new collection of resources for a model is to fire off the following command
 
 ```bash
 php artisan hive:assemble X
